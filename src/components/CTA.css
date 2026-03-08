@@ -1,0 +1,104 @@
+.cta-section {
+    padding: 80px 0;
+}
+
+.cta-inner {
+    text-align: center;
+    padding: 100px 48px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+    /* Animated gradient border */
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Animated glow border */
+.cta-inner::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 29px;
+    background: linear-gradient(135deg, rgba(218, 78, 36, 0.5), rgba(0, 0, 0, 0) 40%, rgba(0, 152, 243, 0.4) 60%, rgba(0, 0, 0, 0));
+    background-size: 300% 300%;
+    animation: ctaBorderRotate 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes ctaBorderRotate {
+    0% {
+        background-position: 0% 0%
+    }
+
+    50% {
+        background-position: 100% 100%
+    }
+
+    100% {
+        background-position: 0% 0%
+    }
+}
+
+/* Inner grid pattern */
+.cta-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* Glow orbs behind CTA */
+.cta-inner .cta-orb-l {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(218, 78, 36, 0.12), transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.cta-inner .cta-orb-r {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(0, 152, 243, 0.12), transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.cta-fine {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 600px) {
+    .cta-inner {
+        padding: 60px 28px;
+    }
+}

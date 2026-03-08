@@ -1,0 +1,43 @@
+/* ── Top Page-Transition Loader Bar ─────────────────────────────────────────── */
+.top-loader-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    z-index: 9999;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+    background-size: 200% 100%;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 5px rgba(16, 185, 129, 0.3);
+    transform-origin: left;
+    transform: scaleX(0);
+    opacity: 0;
+    pointer-events: none;
+    animation: loaderShimmer 1.5s linear infinite;
+}
+
+.top-loader-bar.loading {
+    opacity: 1;
+    transform: scaleX(0.85);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), opacity 100ms ease;
+}
+
+.top-loader-bar.done {
+    transform: scaleX(1);
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.top-loader-bar.fade-out {
+    opacity: 0;
+    transition: opacity 300ms ease 100ms;
+}
+
+@keyframes loaderShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

@@ -1,0 +1,63 @@
+/* ============================================
+   GRO INNOVATIVE — NotFound Page
+   Uses the global .hero-section theme from Home
+   ============================================ */
+
+.not-found-page .hero-section {
+    position: relative;
+    /* Ensure it takes up at least full height for short content, allowing natural centering */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── POPULAR LINKS ── */
+.popular-links {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.popular-links-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.popular-links-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.popular-links-list a {
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s, text-shadow 0.2s;
+    text-decoration: none;
+}
+
+.popular-links-list a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 640px) {
+    .popular-links-list {
+        gap: 16px;
+    }
+
+    .popular-links-list a {
+        font-size: 0.9rem;
+    }
+}

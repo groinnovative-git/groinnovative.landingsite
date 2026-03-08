@@ -1,0 +1,55 @@
+.eye-follow-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    transform: translateY(-4px); /* Tweak vertical alignment for headings */
+}
+
+.eye-follow-icon {
+    position: relative;
+    width: clamp(28px, 4vw, 42px);
+    height: clamp(28px, 4vw, 42px);
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    transition: transform 0.1s ease;
+    overflow: hidden;
+    will-change: transform;
+    pointer-events: none; /* Let the wrapper handle hovers safely */
+}
+
+.eye-follow-pupil {
+    position: absolute;
+    width: 48%;
+    height: 48%;
+    background-color: #050505;
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.15);
+    will-change: transform;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+/* Subtle glint effect on pupil */
+.eye-pupil-glint {
+    width: 25%;
+    height: 25%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+.eye-blink {
+    transform: scaleY(0.1);
+}

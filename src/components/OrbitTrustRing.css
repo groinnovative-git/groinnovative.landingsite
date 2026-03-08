@@ -1,0 +1,124 @@
+/* ══════════════════════════════════════════════
+   OrbitTrustRing — Circular orbit badges
+   Positioned as absolute overlay inside .shv-outer
+══════════════════════════════════════════════ */
+
+/* ── Root overlay ── */
+.otr-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;   /* pass-through; badges re-enable individually */
+    z-index: 15;
+}
+
+/* ── Dashed orbit track ── */
+.otr-ring-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* diameter = 2 × 160px (desktop radius) */
+    width:  320px;
+    height: 320px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px dashed rgba(16, 185, 129, 0.18);
+    pointer-events: none;
+}
+
+/* Faint outer halo ring for depth */
+.otr-ring-track::before {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    border: 1px dashed rgba(16, 185, 129, 0.07);
+}
+
+/* ── Badge positioning shell ── */
+/* JS sets `transform` and `opacity` on this element imperatively */
+.otr-badge-pos {
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    opacity: 0;            /* shown by JS after first position is computed */
+    pointer-events: auto;  /* re-enable pointer events for hover */
+    z-index: 20;
+    will-change: transform;
+}
+
+/* ── Badge pill ── */
+.otr-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px 6px 8px;
+    background: rgba(3, 18, 10, 0.88);
+    border: 1px solid rgba(16, 185, 129, 0.28);
+    border-radius: 100px;
+    white-space: nowrap;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 2px 14px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(16, 185, 129, 0.1);
+    transition:
+        transform      0.22s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow     0.22s,
+        border-color   0.22s;
+    cursor: default;
+}
+
+.otr-badge--hov {
+    transform: scale(1.1);
+    border-color: rgba(16, 185, 129, 0.55);
+    box-shadow:
+        0 0 22px rgba(16, 185, 129, 0.3),
+        0 4px 18px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(16, 185, 129, 0.15);
+}
+
+/* ── Icon ── */
+.otr-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #10B981;
+    flex-shrink: 0;
+}
+
+/* ── Label ── */
+.otr-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #e8f8f3;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+    /* Orbit track shrinks to match radius 105px */
+    .otr-ring-track {
+        width:  210px;
+        height: 210px;
+    }
+
+    .otr-ring-track::before {
+        inset: -12px;
+    }
+
+    .otr-badge {
+        padding: 4px 9px 4px 6px;
+        gap: 4px;
+    }
+
+    .otr-label {
+        font-size: 0.58rem;
+    }
+
+    .otr-icon svg {
+        width: 10px;
+        height: 10px;
+    }
+}

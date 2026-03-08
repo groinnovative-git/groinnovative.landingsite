@@ -1,0 +1,75 @@
+.trusted-section {
+    padding: 48px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.trusted-label {
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 28px;
+}
+
+.ticker-wrap {
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+.ticker-wrap::before,
+.ticker-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ticker-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, black, transparent);
+}
+
+.ticker-wrap::after {
+    right: 0;
+    background: linear-gradient(-90deg, black, transparent);
+}
+
+.ticker-track {
+    display: flex;
+    gap: 0;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 40px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ticker-item:hover {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.ticker-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(218, 78, 36, 0.5);
+}

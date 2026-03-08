@@ -1,0 +1,410 @@
+/* ══════════════════════════════════════════════
+   ServicesHeroVisual — AI Command Panel
+   CSS + Framer Motion (no Three.js)
+══════════════════════════════════════════════ */
+
+/* ── Outer container ── */
+.shv-outer {
+    width: 440px;
+    height: 480px;
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    flex-shrink: 0;
+    cursor: crosshair;
+}
+
+/* ── Ambient glow ── */
+.shv-glow {
+    position: absolute;
+    inset: -12%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 55%, rgba(16, 185, 129, 0.12) 0%, transparent 65%);
+    pointer-events: none;
+    transition: background 0.4s;
+}
+
+.shv-outer--hov .shv-glow {
+    background: radial-gradient(circle at 50% 55%, rgba(16, 185, 129, 0.22) 0%, transparent 65%);
+}
+
+/* ── Background particle dots ── */
+.shv-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #10B981;
+    pointer-events: none;
+    animation: shv-dot-pulse var(--dur, 3s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes shv-dot-pulse {
+
+    0%,
+    100% {
+        opacity: 0.1;
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: scale(1.5) translateY(-6px);
+    }
+}
+
+/* ── Expanding pulse ring ── */
+.shv-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    height: 220px;
+    margin: -110px 0 0 -110px;
+    border-radius: 50%;
+    border: 1px solid rgba(16, 185, 129, 0.36);
+    pointer-events: none;
+    animation: shv-pulse-expand 4.5s ease-out infinite;
+}
+
+@keyframes shv-pulse-expand {
+    0% {
+        transform: scale(0.55);
+        opacity: 0.7;
+    }
+
+    65% {
+        transform: scale(1.55);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.55);
+        opacity: 0;
+    }
+}
+
+/* ── Main glass panel ── */
+.shv-panel {
+    position: relative;
+    width: 290px;
+    padding: 20px 18px 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    /* Dark base */
+    background-color: rgba(3, 18, 10, 0.88);
+    /* Subtle grid lines */
+    background-image:
+        linear-gradient(rgba(16, 185, 129, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.045) 1px, transparent 1px);
+    background-size: 22px 22px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow:
+        0 0 0 1px rgba(16, 185, 129, 0.06),
+        0 24px 64px -24px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(16, 185, 129, 0.14);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── Corner bracket accents ── */
+.shv-corner {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    border-style: solid;
+    border-color: #10B981;
+    border-width: 0;
+    pointer-events: none;
+}
+
+.shv-corner--tl {
+    top: 9px;
+    left: 9px;
+    border-top-width: 1.5px;
+    border-left-width: 1.5px;
+    border-radius: 3px 0 0 0;
+}
+
+.shv-corner--tr {
+    top: 9px;
+    right: 9px;
+    border-top-width: 1.5px;
+    border-right-width: 1.5px;
+    border-radius: 0 3px 0 0;
+}
+
+.shv-corner--bl {
+    bottom: 9px;
+    left: 9px;
+    border-bottom-width: 1.5px;
+    border-left-width: 1.5px;
+    border-radius: 0 0 0 3px;
+}
+
+.shv-corner--br {
+    bottom: 9px;
+    right: 9px;
+    border-bottom-width: 1.5px;
+    border-right-width: 1.5px;
+    border-radius: 0 0 3px 0;
+}
+
+/* ── Horizontal scan line ── */
+.shv-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(16, 185, 129, 0.6) 50%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+    animation: shv-scan-anim 4s linear infinite;
+}
+
+.shv-scan--fast {
+    animation-duration: 1.6s;
+}
+
+@keyframes shv-scan-anim {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    4% {
+        opacity: 1;
+    }
+
+    96% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* ── Status bar ── */
+.shv-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.shv-blink-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10B981;
+    flex-shrink: 0;
+    animation: shv-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes shv-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 5px rgba(16, 185, 129, 0.8);
+    }
+
+    50% {
+        opacity: 0.25;
+        box-shadow: none;
+    }
+}
+
+.shv-status-txt {
+    color: #10B981;
+}
+
+.shv-sep {
+    color: rgba(16, 185, 129, 0.35);
+}
+
+.shv-version {
+    color: rgba(16, 185, 129, 0.45);
+    font-size: 0.56rem;
+}
+
+/* ── KPI metrics row ── */
+.shv-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+.shv-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 4px;
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.13);
+    border-radius: 8px;
+}
+
+.shv-metric-val {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #10B981;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.shv-metric-lbl {
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(16, 185, 129, 0.5);
+    text-transform: uppercase;
+}
+
+/* ── Section divider ── */
+.shv-divider {
+    height: 1px;
+    background: rgba(16, 185, 129, 0.1);
+    margin: 10px 0;
+}
+
+/* ── Bar chart ── */
+.shv-chart-wrap {
+    margin-bottom: 4px;
+}
+
+.shv-chart-lbl {
+    display: block;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(16, 185, 129, 0.45);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.shv-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 46px;
+}
+
+.shv-bar {
+    flex: 1;
+    background: linear-gradient(to top, #10B981 0%, #34D399 100%);
+    border-radius: 3px 3px 0 0;
+    opacity: 0.85;
+    min-height: 3px;
+}
+
+/* ── Line graph ── */
+.shv-graph-wrap {
+    margin-top: 0;
+}
+
+.shv-svg {
+    display: block;
+    width: 100%;
+    height: 46px;
+    overflow: visible;
+}
+
+/* ── Floating metric chips ── */
+.shv-chip {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    background: rgba(3, 18, 10, 0.92);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(16, 185, 129, 0.06);
+    white-space: nowrap;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.shv-chip-ico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #10B981;
+    flex-shrink: 0;
+}
+
+.shv-chip-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.shv-chip-val {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+.shv-chip-lbl {
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: rgba(16, 185, 129, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .shv-outer {
+        width: 100%;
+        height: 300px;
+    }
+
+    .shv-panel {
+        width: 220px;
+        padding: 14px 12px 12px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: rgba(3, 18, 10, 0.98);
+    }
+
+    .shv-chip {
+        display: none;
+    }
+
+    .shv-metric-val {
+        font-size: 0.88rem;
+    }
+
+    .shv-bars {
+        height: 32px;
+    }
+
+    .shv-svg {
+        height: 32px;
+    }
+
+    .shv-pulse {
+        width: 160px;
+        height: 160px;
+        margin: -80px 0 0 -80px;
+    }
+}

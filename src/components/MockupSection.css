@@ -1,0 +1,305 @@
+.mockup-section {
+    padding: 80px 0 120px;
+}
+
+.mockup-outer {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Glow behind mockup */
+.mockup-glow {
+    position: absolute;
+    inset: -40px;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 152, 243, 0.14), transparent 65%);
+    filter: blur(20px);
+    animation: orbFloat 7s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Diagonal beams inside mockup zone */
+.mockup-beam {
+    position: absolute;
+    pointer-events: none;
+    overflow: hidden;
+    inset: 0;
+    border-radius: 20px;
+}
+
+.mb-1 {
+    position: absolute;
+    top: -80px;
+    right: 5%;
+    width: 1.5px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 152, 243, 0.5), transparent);
+    transform: rotate(-30deg);
+}
+
+.mb-2 {
+    position: absolute;
+    top: -80px;
+    right: 10%;
+    width: 40px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 152, 243, 0.08), transparent);
+    transform: rotate(-30deg);
+    filter: blur(6px);
+}
+
+.mb-3 {
+    position: absolute;
+    top: -80px;
+    right: 3%;
+    width: 1.5px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(218, 78, 36, 0.6), transparent);
+    transform: rotate(-30deg);
+}
+
+/* Frame */
+.app-frame {
+    position: relative;
+    z-index: 1;
+    background: rgba(5, 7, 18, 0.95);
+    border: 0.8px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 0 0.8px rgba(255, 255, 255, 0.06);
+    transition: box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.app-frame:hover {
+    box-shadow: 0 50px 120px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 152, 243, 0.08);
+    transform: translateY(-4px);
+}
+
+/* App bar */
+.app-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 0.8px solid rgba(255, 255, 255, 0.07);
+}
+
+.traffic {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.dot-r,
+.dot-y,
+.dot-g {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.dot-r {
+    background: #ff5f56;
+}
+
+.dot-y {
+    background: #ffbd2e;
+}
+
+.dot-g {
+    background: #27c93f;
+}
+
+.app-bar-logo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Syne', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    flex: 1;
+    text-align: center;
+}
+
+.app-bar-time {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+/* Layout */
+.app-body {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    min-height: 320px;
+}
+
+.app-sidebar {
+    background: rgba(255, 255, 255, 0.02);
+    border-right: 0.8px solid rgba(255, 255, 255, 0.07);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-section {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    padding: 8px 6px 4px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 7px;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+.sidebar-item.active {
+    background: rgba(0, 152, 243, 0.1);
+    border: 0.8px solid rgba(0, 152, 243, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-item:not(.active):hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar-icon {
+    font-size: 0.9rem;
+}
+
+/* Main content */
+.app-main {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 0.8px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.3);
+    transition: border-color 0.3s;
+}
+
+.search-bar:hover {
+    border-color: rgba(0, 152, 243, 0.3);
+}
+
+.search-icon {
+    opacity: 0.4;
+}
+
+.search-cursor {
+    color: rgb(0, 152, 243);
+    animation: blink 1s step-end infinite;
+}
+
+.app-tabs {
+    display: flex;
+    gap: 4px;
+}
+
+.tab {
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.35);
+    cursor: default;
+    transition: all 0.2s;
+}
+
+.tab.tab-active {
+    background: rgba(0, 152, 243, 0.12);
+    border: 0.8px solid rgba(0, 152, 243, 0.3);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.tab:not(.tab-active):hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.app-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.app-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 0.8px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+    font-size: 0.8rem;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.app-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateX(3px);
+}
+
+.row-status {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.row-name {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.row-tag {
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+.tag-run {
+    background: rgba(39, 201, 63, 0.1);
+    border: 0.8px solid rgba(39, 201, 63, 0.25);
+    color: rgba(39, 201, 63, 0.8);
+}
+
+.tag-que {
+    background: rgba(218, 78, 36, 0.1);
+    border: 0.8px solid rgba(218, 78, 36, 0.25);
+    color: rgba(218, 78, 36, 0.75);
+}
+
+.tag-done {
+    background: rgba(0, 152, 243, 0.1);
+    border: 0.8px solid rgba(0, 152, 243, 0.25);
+    color: rgba(0, 152, 243, 0.8);
+}
+
+.row-time {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
