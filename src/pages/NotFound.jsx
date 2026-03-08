@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import useReveal from '../hooks/useReveal'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import ParticleCanvas from '../components/ParticleCanvas'
@@ -6,21 +6,6 @@ import SEO from '../components/SEO'
 import { PAGE_SEO } from '../seo/seoConfig'
 import './NotFound.css'
 
-function useReveal() {
-    useEffect(() => {
-        const els = document.querySelectorAll('.reveal')
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible')
-                    obs.unobserve(e.target)
-                }
-            })
-        }, { threshold: 0.12 })
-        els.forEach(el => obs.observe(el))
-        return () => obs.disconnect()
-    }, [])
-}
 
 export default function NotFound() {
     useReveal()

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import useReveal from '../hooks/useReveal'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 // emailjs loaded dynamically at form submit time — saves ~50KB from initial bundle
@@ -56,19 +57,7 @@ function validate(f) {
     return e
 }
 
-// ── Scroll reveal ──────────────────────────────────────────────────────────────
-function useReveal() {
-    useEffect(() => {
-        const els = document.querySelectorAll('.reveal')
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) }
-            })
-        }, { threshold: 0.1 })
-        els.forEach(el => obs.observe(el))
-        return () => obs.disconnect()
-    }, [])
-}
+
 
 const BLANK = {
     name: '', email: '', phone: '', service: '',
@@ -416,64 +405,64 @@ export default function Contact() {
             </section>
             {/* ── Toast Notification (portal escapes transform stacking context) ── */}
             {createPortal(
-            <AnimatePresence>
-                {status && (
-                    <motion.div
-                        key={status}
-                        className={`toast-notif toast-notif--${status.startsWith('success') ? 'success' : 'error'}`}
-                        role="alert"
-                        aria-live="polite"
-                        initial={{ opacity: 0, y: 64, scale: 0.94 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 32, scale: 0.94 }}
-                        transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        {/* Icon */}
-                        <div className="toast-notif-icon" aria-hidden="true">
-                            {status.startsWith('success') ? (
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                    <polyline points="22 4 12 14.01 9 11.01" />
-                                </svg>
-                            ) : (
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <line x1="12" y1="8" x2="12" y2="12" />
-                                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                                </svg>
-                            )}
-                        </div>
-
-                        {/* Content */}
-                        <div className="toast-notif-body">
-                            <p className="toast-notif-title">
-                                {status.startsWith('success') ? 'Message Sent!' : 'Sending Failed'}
-                            </p>
-                            <p className="toast-notif-msg">
-                                {status === 'success' && "We'll get back to you within 24 hours. Check your inbox!"}
-                                {status === 'success_no_reply' && 'Submitted! Contact us at groinnovative@gmail.com if you need confirmation.'}
-                                {status === 'error' && 'Something went wrong. Please try again or email us directly.'}
-                            </p>
-                        </div>
-
-                        {/* Close */}
-                        <button
-                            className="toast-notif-close"
-                            onClick={() => setStatus(null)}
-                            aria-label="Close notification"
+                <AnimatePresence>
+                    {status && (
+                        <motion.div
+                            key={status}
+                            className={`toast-notif toast-notif--${status.startsWith('success') ? 'success' : 'error'}`}
+                            role="alert"
+                            aria-live="polite"
+                            initial={{ opacity: 0, y: 64, scale: 0.94 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 32, scale: 0.94 }}
+                            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
-                        </button>
+                            {/* Icon */}
+                            <div className="toast-notif-icon" aria-hidden="true">
+                                {status.startsWith('success') ? (
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                        <polyline points="22 4 12 14.01 9 11.01" />
+                                    </svg>
+                                ) : (
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="12" y1="8" x2="12" y2="12" />
+                                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                                    </svg>
+                                )}
+                            </div>
 
-                        {/* Auto-dismiss progress bar */}
-                        <div className="toast-notif-progress" aria-hidden="true" />
-                    </motion.div>
-                )}
-            </AnimatePresence>,
-            document.body
+                            {/* Content */}
+                            <div className="toast-notif-body">
+                                <p className="toast-notif-title">
+                                    {status.startsWith('success') ? 'Message Sent!' : 'Sending Failed'}
+                                </p>
+                                <p className="toast-notif-msg">
+                                    {status === 'success' && "We'll get back to you within 24 hours. Check your inbox!"}
+                                    {status === 'success_no_reply' && 'Submitted! Contact us at groinnovative@gmail.com if you need confirmation.'}
+                                    {status === 'error' && 'Something went wrong. Please try again or email us directly.'}
+                                </p>
+                            </div>
+
+                            {/* Close */}
+                            <button
+                                className="toast-notif-close"
+                                onClick={() => setStatus(null)}
+                                aria-label="Close notification"
+                            >
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+
+                            {/* Auto-dismiss progress bar */}
+                            <div className="toast-notif-progress" aria-hidden="true" />
+                        </motion.div>
+                    )}
+                </AnimatePresence>,
+                document.body
             )}
 
         </div>

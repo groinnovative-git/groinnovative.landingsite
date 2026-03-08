@@ -9,17 +9,7 @@ import { PAGE_SEO } from '../seo/seoConfig'
 import { breadcrumbSchema } from '../seo/schemas'
 import './About.css'
 
-/* ── Scroll reveal (same as homepage) ── */
-function useReveal() {
-    useEffect(() => {
-        const els = document.querySelectorAll('.reveal')
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } })
-        }, { threshold: 0.12 })
-        els.forEach(el => obs.observe(el))
-        return () => obs.disconnect()
-    }, [])
-}
+import useReveal from '../hooks/useReveal'
 
 /* ── Framer Motion variants ── */
 const fadeUp = {
@@ -199,6 +189,13 @@ export default function About() {
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>Free Consultation</span>
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>NDA Protected</span>
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>Remote Friendly</span>
+                            </div>
+                            {/* ── Scroll indicator ── */}
+                            <div className="scroll-indicator" aria-hidden="true">
+                                <span className="scroll-indicator-label">Scroll Down</span>
+                                <div className="scroll-indicator-mouse">
+                                    <div className="scroll-indicator-wheel" />
+                                </div>
                             </div>
                         </div>
                     </div>
