@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
-import logoImg from '../assets/logo.png'
+import logoImg from '../assets/logo1.png'
 
 const services = ['Web Development', 'Mobile Apps', 'Cloud Solutions', 'Digital Marketing', 'Logo Design', 'IT Consulting']
 const company = [

@@ -13,12 +13,12 @@
   --accent-dark: #047857;
 
   /* Sizing & Radius */
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-sm: 7px;
+  --radius: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
   --max-w: 1200px;
-  --nav-h: 72px;
+  --nav-h: 68px;
 
   /* Animation */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -199,21 +199,21 @@ h5 {
 }
 
 h1 {
-  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-size: clamp(2.15rem, 5vw, 3.45rem);
 }
 
 h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.65rem, 3.2vw, 2.5rem);
 }
 
 h3 {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
 }
 
 p {
   color: var(--muted);
   line-height: 1.75;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 /* ── Buttons (Premium Green Glow) ── */
@@ -221,14 +221,14 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 28px;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  padding: 11px 24px;
+  border-radius: 7px;
+  font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   cursor: pointer;
-  min-height: 48px;
+  min-height: 44px;
 }
 
 .btn-primary {
@@ -279,13 +279,13 @@ p {
 }
 
 .btn-sm {
-  padding: 9px 20px;
-  font-size: 0.875rem;
+  padding: 8px 18px;
+  font-size: 0.84rem;
 }
 
 .btn-lg {
-  padding: 16px 36px;
-  font-size: 1.05rem;
+  padding: 14px 30px;
+  font-size: 1rem;
 }
 
 .btn .arr {
@@ -347,7 +347,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 40px;
+  gap: 32px;
   position: relative;
   z-index: 1;
   min-height: 50vh;
@@ -398,42 +398,49 @@ p {
   background: transparent;
 }
 
+.hero-left-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary-light) 0%, transparent 60%);
+  border-bottom: 1px solid var(--border);
+}
+
 /* ── Hero typography & components (shared — DO NOT move to Home.css) ────────
    These classes are used by About, Services, Contact, and NotFound pages.
    ────────────────────────────────────────────────────────────────────────── */
 .hero-headline {
   margin-bottom: 20px;
   letter-spacing: -0.02em;
-  font-size: clamp(1.75rem, 4.5vw, 3.2rem);
+  font-size: clamp(1.6rem, 4vw, 2.9rem);
   line-height: 1.15;
 }
 
 .hero-sub {
-  font-size: 1.1rem;
+  font-size: 1.02rem;
   color: var(--muted);
   max-width: 580px;
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
 
 .hero-actions {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 26px;
 }
 
 .trust-pills {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .trust-pills span {
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 100px;
   background: var(--card);
   border: 1px solid var(--border);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--muted);
   box-shadow: var(--shadow-sm);
@@ -468,16 +475,16 @@ p {
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
+  gap: 5px;
+  padding: 5px 14px;
   background: rgba(16, 185, 129, 0.1);
   color: var(--primary);
   border-radius: 100px;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
@@ -494,7 +501,7 @@ p {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 28px;
   box-shadow: var(--shadow-md);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(16px);
@@ -672,14 +679,14 @@ p {
 
 /* ── Icon box (Green Accents) ── */
 .icon-box {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 24px;
+  font-size: 1.35rem;
+  margin-bottom: 20px;
   background: rgba(16, 185, 129, 0.1);
   color: var(--primary);
   border: 1px solid rgba(16, 185, 129, 0.2);

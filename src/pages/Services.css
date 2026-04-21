@@ -1,3 +1,9 @@
+.services-page .container {
+    max-width: 1320px;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
 .page-hero {
     padding: calc(var(--nav-h) + 64px) 0 48px;
     background: transparent;

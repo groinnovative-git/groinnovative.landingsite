@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import { Link } from 'react-router-dom'
-import { motion, useReducedMotion, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useReducedMotion, useMotionValue, useSpring, useInView } from 'framer-motion'
 import ParticleCanvas from '../components/ParticleCanvas'
 import EyeFollowIcon from '../components/EyeFollowIcon'
 import SEO from '../components/SEO'
@@ -56,6 +56,62 @@ const whyUs = [
     { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" /><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" /></svg>, title: 'Long-Term Partnership', desc: 'From development to maintenance and optimization, we support your growth beyond launch ensuring continuous improvement.' },
 ]
 
+const testimonials = [
+    {
+        quote: 'GroInnovative helped us move from a basic online presence to a professional lead-focused website. The process was fast, clear, and reliable.',
+        name: 'Arun Prakash',
+        role: 'Founder, Local Service Brand',
+        metric: 'Better conversion clarity',
+    },
+    {
+        quote: 'Their team understood both design and technical execution. We got a cleaner site, stronger positioning, and faster turnaround than expected.',
+        name: 'Mithra Devi',
+        role: 'Director, Growing Business',
+        metric: 'Launch delivered on time',
+    },
+    {
+        quote: 'What stood out was support after delivery. Changes were handled quickly, and the final output felt polished and business-ready.',
+        name: 'Karthik Raj',
+        role: 'Operations Lead, SME',
+        metric: 'Reliable post-launch support',
+    },
+]
+
+const homeFaqs = [
+    {
+        q: 'What services does GroInnovative provide?',
+        a: 'We provide website development, custom software development, SEO optimization, digital marketing support, maintenance, and brand creative services aligned to business growth.',
+    },
+    {
+        q: 'How long does a project usually take?',
+        a: 'Small websites can move quickly, while larger software or growth-focused projects take longer. We define timelines clearly after understanding your scope and priorities.',
+    },
+    {
+        q: 'Do you provide support after launch?',
+        a: 'Yes. We support ongoing updates, fixes, optimization, maintenance, and scaling so your product stays reliable after go-live.',
+    },
+    {
+        q: 'Can you build SEO-ready websites from the start?',
+        a: 'Yes. We structure websites with performance, mobile responsiveness, technical SEO basics, and conversion-ready content flow in mind from the beginning.',
+    },
+    {
+        q: 'Can you redesign or improve an existing website?',
+        a: 'Yes. We can refresh design, improve performance, restructure content, fix UX issues, and strengthen conversion flow without starting from scratch unless that is the better option.',
+    },
+    {
+        q: 'Do you work with startups as well as established businesses?',
+        a: 'Yes. We work with startups, local businesses, service brands, and growing companies that need clear digital systems and practical execution.',
+    },
+    {
+        q: 'How do you estimate project pricing?',
+        a: 'Pricing depends on scope, complexity, timelines, and the features required. After understanding your requirements, we recommend the right direction and provide clear scope-based pricing.',
+    },
+    {
+        q: 'What do you need from us to get started?',
+        a: 'Usually we need your business goals, target audience, current pain points, references if any, and clarity on what outcome you want from the website or software.',
+    },
+]
+
 // Framer Motion Variants for Why Section
 const fadeInUpBadge = {
     hidden: { opacity: 0, y: 12 },
@@ -94,14 +150,46 @@ const serviceContainer = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
 }
+const servicesSplitOffsets = [
+    { x: -180, y: -120, rotate: -8 },
+    { x: 0, y: -120, rotate: -3 },
+    { x: 180, y: -120, rotate: 7 },
+    { x: -180, y: 120, rotate: 5 },
+    { x: 0, y: 120, rotate: 2 },
+    { x: 180, y: 120, rotate: -6 },
+]
 const serviceCardAnim = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: (custom) => ({
+        opacity: 0,
+        x: custom.x,
+        y: custom.y,
+        rotate: custom.rotate,
+        scale: 0.82,
+    }),
+    visible: {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        rotate: 0,
+        scale: 1,
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+    }
+}
+const homeSectionStagger = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } }
+}
+const homeSectionItem = {
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } }
 }
 
 export default function Home() {
     useReveal()
+    const [openFaq, setOpenFaq] = useState(0)
     const prefersReducedMotion = useReducedMotion()
+    const servicesRef = useRef(null)
+    const servicesInView = useInView(servicesRef, { once: true, amount: 0.28 })
     const mouseX = useMotionValue(0)
     const mouseY = useMotionValue(0)
     const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 })
@@ -116,7 +204,7 @@ export default function Home() {
     }
 
     return (
-        <div className="page-enter">
+        <div className="page-enter home-page">
             <SEO {...PAGE_SEO.home} />
             <StructuredData data={[
                 breadcrumbSchema([{ name: 'Home', path: '/' }]),
@@ -125,18 +213,14 @@ export default function Home() {
             {/* ── HERO ── */}
             <section className="hero-section">
                 <ParticleCanvas />
+                <div className="hero-left-glow" />
                 <div className="container">
                     <div className="hero-grid-wrapper CenteredLayout">
                         <div className="hero-content centered">
-                            <div className="badge reveal">
-                                <span className="badge-dot" />
-                                ACCELERATE YOUR BUSINESSES
-                            </div>
                             <h1 className="hero-headline reveal reveal-delay-1">
-                                AI Driven Software &<br />
                                 <span className="hero-nowrap-line">
                                     <EyeFollowIcon />
-                                    <span className="gradient-text">Growth Systems</span>
+                                    Software Development & AI Solutions
                                 </span><br />
                                 for Modern Businesses
                             </h1>
@@ -157,14 +241,13 @@ export default function Home() {
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg> No Lock-in Contracts</span>
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg> NDA Protected</span>
                             </div>
-                            {/* ── Scroll indicator ── */}
-                            <div className="scroll-indicator" aria-hidden="true">
-                                <span className="scroll-indicator-label">Scroll Down</span>
-                                <div className="scroll-indicator-mouse">
-                                    <div className="scroll-indicator-wheel" />
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                </div>
+                <div className="scroll-indicator" aria-hidden="true">
+                    <span className="scroll-indicator-label">Scroll Down</span>
+                    <div className="scroll-indicator-mouse">
+                        <div className="scroll-indicator-wheel" />
                     </div>
                 </div>
             </section>
@@ -174,10 +257,14 @@ export default function Home() {
             <section className="stats-section section-alt">
                 <div className="container">
                     <div className="stats-grid">
-                        {stats.map(s => (
+                        {stats.map((s, index) => (
                             <div className="stat-card reveal" key={s.label}>
-                                <div className="stat-num"><CountUp target={s.value} suffix={s.suffix} /></div>
-                                <div className="stat-label">{s.label}</div>
+                                <span className="stat-card-index">0{index + 1}</span>
+                                <span className="stat-card-rail" aria-hidden="true" />
+                                <div className="stat-card-inner">
+                                    <div className="stat-num"><CountUp target={s.value} suffix={s.suffix} /></div>
+                                    <div className="stat-label">{s.label}</div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -189,23 +276,44 @@ export default function Home() {
                 <div className="services-particles-wrap" aria-hidden>
                     {/* ParticleCanvas removed — hero already has one; 2 canvases doubled CPU cost */}
                 </div>
-                <div className="container relative-z">
+                <div className="container relative-z" ref={servicesRef}>
                     <div className="section-header">
                         <div className="badge reveal"><span className="badge-dot" />What We Do</div>
                         <h2 className="reveal reveal-delay-1">End-to-End Digital & Software Solutions</h2>
                         <p className="reveal reveal-delay-2">From idea to launch we handle every layer of your digital product.</p>
                     </div>
-                    <motion.div
+                    <div className="services-showcase">
+                        <motion.div
+                            className="services-stack-intro"
+                            initial={false}
+                            animate={servicesInView ? { opacity: 0, scale: 0.88, y: -12, filter: 'blur(8px)' } : { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+                            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                            aria-hidden="true"
+                        >
+                            <div className="services-stack-card card services-stack-card-back" />
+                            <div className="services-stack-card card services-stack-card-mid" />
+                            <div className="services-stack-card card services-stack-card-front">
+                                <div className="services-stack-badge">All Services</div>
+                                <h3>Web, SEO, Software & Growth</h3>
+                                <p>One focused team handling the full digital journey from idea to launch.</p>
+                                <div className="services-stack-tags">
+                                    <span>Websites</span>
+                                    <span>SEO</span>
+                                    <span>Software</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                        <motion.div
                         className="grid-3 services-grid"
                         variants={serviceContainer}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.15 }}
+                        animate={servicesInView ? 'visible' : 'hidden'}
                     >
-                        {services.map((s) => (
+                        {services.map((s, index) => (
                             <motion.div
                                 key={s.title}
                                 variants={serviceCardAnim}
+                                custom={servicesSplitOffsets[index]}
                                 className="card service-card"
                             >
                                 <div className="icon-box" style={{ background: s.color, color: 'var(--primary)' }}>{s.icon}</div>
@@ -214,7 +322,8 @@ export default function Home() {
                                 <Link to="/services" className="card-link">Explore Service <span className="arr">→</span></Link>
                             </motion.div>
                         ))}
-                    </motion.div>
+                        </motion.div>
+                    </div>
                     <div style={{ textAlign: 'center', marginTop: 48, position: 'relative', zIndex: 1 }}>
                         <Link to="/services" className="btn btn-secondary">View All Services <span className="arr">→</span></Link>
                     </div>
@@ -230,9 +339,9 @@ export default function Home() {
                     />
                 )}
                 <div className="container">
+                    <motion.div variants={fadeInUpBadge} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="badge why-section-badge"><span className="badge-dot" />WHY GROINNOVATIVE</motion.div>
                     <div className="why-inner">
                         <div className="why-text">
-                            <motion.div variants={fadeInUpBadge} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="badge"><span className="badge-dot" />WHY GRO INNOVATIVE</motion.div>
                             <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>Your Technology Partner for Scalable Growth</motion.h2>
                             <motion.p variants={fadeInUpP} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 32 }}>
                                 We build scalable digital systems that turn ideas into real business growth combining AI powered software development, performance focused web solutions, and strategic digital execution.
@@ -267,7 +376,7 @@ export default function Home() {
                             </motion.div>
                         </div>
                         <motion.div variants={fadeInUpBadge} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="why-cta-wrap">
-                            <Link to="/how-it-works" className="btn btn-primary">
+                            <Link to="/services" className="btn btn-primary">
                                 See How We Work <span className="arr">→</span>
                             </Link>
                         </motion.div>
@@ -275,19 +384,146 @@ export default function Home() {
                 </div>
             </section>
 
+            <section className="testimonials-section section-alt section">
+                <div className="container">
+                    <div className="section-header testimonials-head">
+                        <div className="badge"><span className="badge-dot" />Testimonials</div>
+                        <h2 className="reveal reveal-delay-1">What Clients Remember Working With Us</h2>
+                        <p className="reveal reveal-delay-2">Clear communication, reliable delivery, and polished execution are the things clients mention most often after launch.</p>
+                    </div>
+                </div>
+                <motion.div
+                    className="testimonials-marquee"
+                    variants={homeSectionItem}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
+                    <div className="testimonial-row testimonial-row-left">
+                        <div className="testimonial-track">
+                            {[0, 1].map((groupIndex) => (
+                                <div
+                                    className="testimonial-track-group"
+                                    key={`group-${groupIndex}`}
+                                    aria-hidden={groupIndex === 1 ? 'true' : undefined}
+                                >
+                                    {testimonials.map((item, index) => (
+                                        <article className="testimonial-scroll-card card" key={`single-${groupIndex}-${item.name}-${index}`}>
+                                            <div className="testimonial-mini-top">
+                                                <span className="testimonial-metric">{item.metric}</span>
+                                            </div>
+                                            <p>"{item.quote}"</p>
+                                            <div className="testimonial-mini-meta">
+                                                <strong>{item.name}</strong>
+                                                <span>{item.role}</span>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
+
+            <section className="home-faq-section section">
+                <div className="container">
+                    <div className="section-header faq-section-head">
+                        <div className="badge"><span className="badge-dot" />FAQ</div>
+                        <h2 className="reveal reveal-delay-1">Common Questions Before You Start</h2>
+                        <p className="reveal reveal-delay-2">Before reaching out, most businesses want clarity on pricing, timelines, support, and what working together will actually look like.</p>
+                    </div>
+                    <motion.div
+                        className="home-faq-intro card"
+                        variants={homeSectionItem}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        <div className="home-faq-intro-copy">
+                            <h3>Need a project-specific answer?</h3>
+                            <p>If your requirement is unique, we can review your business case and suggest the right next step without forcing unnecessary complexity.</p>
+                        </div>
+                        <Link to="/contact" className="btn btn-secondary">Ask Your Question <span className="arr">→</span></Link>
+                    </motion.div>
+                    <motion.div
+                        className="home-faq-list"
+                        variants={homeSectionStagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.15 }}
+                    >
+                        {homeFaqs.map((item, index) => {
+                            const isOpen = openFaq === index
+                            return (
+                                <motion.article className={`home-faq-item card${isOpen ? ' open' : ''}`} key={item.q} variants={homeSectionItem}>
+                                    <button
+                                        type="button"
+                                        className="home-faq-question"
+                                        onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                                        aria-expanded={isOpen}
+                                    >
+                                        <span>{item.q}</span>
+                                        <span className="home-faq-plus">{isOpen ? '-' : '+'}</span>
+                                    </button>
+                                    <div className="home-faq-answer-wrap">
+                                        <div className="home-faq-answer">
+                                            <p>{item.a}</p>
+                                        </div>
+                                    </div>
+                                </motion.article>
+                            )
+                        })}
+                    </motion.div>
+                </div>
+            </section>
+
             {/* ── CTA BANNER ── */}
             <section className="cta-banner section section-dark">
                 <div className="container">
-                    <div className="cta-banner-inner">
-                        <div>
-                            <h2 className="reveal" style={{ color: '#fff' }}>Ready to build something great?</h2>
-                            <p className="reveal reveal-delay-1">Get a free consultation and project estimate within 24 hours.</p>
-                        </div>
-                        <div className="reveal reveal-delay-2">
-                            <Link to="/contact" className="btn btn-white btn-lg">
-                                Start Your Project <span className="arr">→</span>
-                            </Link>
-                        </div>
+                    <div className="section-header cta-section-head">
+                        <div className="badge"><span className="badge-dot" />CTA</div>
+                        <h2 className="reveal reveal-delay-1">Start with a Clear Plan, Not Guesswork</h2>
+                        <p className="reveal reveal-delay-2">If you already know you need a better website, stronger system, or cleaner execution path, we can help you define the right move.</p>
+                    </div>
+                    <div className="cta-banner-inner home-cta-panel">
+                        <motion.div
+                            className="home-cta-copy"
+                            variants={homeSectionItem}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.25 }}
+                        >
+                            <span className="home-cta-eyebrow">What you get</span>
+                            <h2 style={{ color: '#fff' }}>A focused consultation that turns your idea into an actionable roadmap.</h2>
+                            <p>We help you understand what to build, what to avoid, and what the smartest next step looks like for your business right now.</p>
+                            <div className="home-cta-points">
+                                <span>Free project discussion</span>
+                                <span>Clear scope guidance</span>
+                                <span>Launch and support mindset</span>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            className="home-cta-side"
+                            variants={homeSectionItem}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.25 }}
+                        >
+                            <div className="home-cta-card card">
+                                <span className="home-cta-card-kicker">Next step</span>
+                                <strong>Book a free consultation</strong>
+                                <p>Tell us your goal, current blockers, and timeline. We will help you map the right approach and recommend what actually matters first.</p>
+                                <div className="home-cta-mini-list">
+                                    <span>Website or software direction</span>
+                                    <span>SEO and growth suitability</span>
+                                    <span>Launch and support clarity</span>
+                                </div>
+                                <Link to="/contact" className="btn btn-white btn-lg">
+                                    Start Your Project <span className="arr">→</span>
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

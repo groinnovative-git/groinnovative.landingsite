@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
-import logoImg from '../assets/logo.png'
+import logoImg from '../assets/logo1.png'
 import { useHideOnScroll } from '../hooks/useHideOnScroll'
 
 const navLinks = [

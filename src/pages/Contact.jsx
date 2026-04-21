@@ -172,7 +172,7 @@ export default function Contact() {
 
     // ── Render ─────────────────────────────────────────────────────────────────
     return (
-        <div className="page-enter">
+        <div className="page-enter contact-page">
             <SEO {...PAGE_SEO.contact} />
             <StructuredData data={breadcrumbSchema([
                 { name: 'Home', path: '/' },

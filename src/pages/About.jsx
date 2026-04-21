@@ -154,7 +154,7 @@ export default function About() {
     const prefersReduced = useReducedMotion()
 
     return (
-        <div className="page-enter">
+        <div className="page-enter about-page">
             <SEO {...PAGE_SEO.about} />
             <StructuredData data={breadcrumbSchema([
                 { name: 'Home', path: '/' },
@@ -164,6 +164,7 @@ export default function About() {
             {/* ─── 1. HERO ───────────────────────────────────────────────────── */}
             <section className="hero-section about-hero">
                 <ParticleCanvas />
+                <div className="hero-left-glow" />
                 <div className="container">
                     <div className="hero-grid-wrapper CenteredLayout">
                         <div className="hero-content centered" style={{ maxWidth: 880 }}>

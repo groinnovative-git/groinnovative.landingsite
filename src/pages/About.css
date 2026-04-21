@@ -1,8 +1,14 @@
 /* ── About Page ────────────────────────────────────────────────────────────── */
 
 /* Hero — reuses hero-section from Home.css */
+.about-page .container {
+    max-width: 1320px;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
 .about-hero {
-    padding: calc(var(--nav-h) + 80px) 0 100px;
+    padding: calc(var(--nav-h) + 56px) 0 72px;
 }
 
 /* ── Who We Are ── */

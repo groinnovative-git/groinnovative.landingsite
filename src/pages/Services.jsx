@@ -78,7 +78,7 @@ export default function Services() {
 
 
     return (
-        <div className="page-enter">
+        <div className="page-enter services-page">
             <SEO {...PAGE_SEO.services} />
             <StructuredData data={[
                 breadcrumbSchema([
