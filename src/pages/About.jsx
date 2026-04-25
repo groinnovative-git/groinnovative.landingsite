@@ -600,14 +600,14 @@ export default function About() {
             </section>
 
             {/* ─── GEO FAQ SECTION ────────────────────────────────────────────── */}
-            <section className="services-faq-section section" style={{ background: 'var(--card)' }}>
+            <section className="about-faq-section section" style={{ background: 'var(--card)' }}>
                 <div className="container">
                     <div className="section-header services-section-head">
                         <div className="badge"><span className="badge-dot" />COMPANY FAQ</div>
                         <h2>Common Questions About Groinnovative</h2>
                     </div>
                     <motion.div
-                        className="services-faq-list"
+                        className="about-faq-list"
                         variants={stagger}
                         initial="hidden"
                         whileInView="visible"
@@ -616,18 +616,18 @@ export default function About() {
                         {aboutFaqData.map((item, index) => {
                             const isOpen = openFaq === index
                             return (
-                                <motion.article className={`services-faq-item card${isOpen ? ' open' : ''}`} key={item.q} variants={cardAnim}>
+                                <motion.article className={`about-faq-item card${isOpen ? ' open' : ''}`} key={item.q} variants={cardAnim}>
                                     <button
                                         type="button"
-                                        className="services-faq-question"
+                                        className="about-faq-question"
                                         onClick={() => setOpenFaq(isOpen ? -1 : index)}
                                         aria-expanded={isOpen}
                                     >
                                         <span>{item.q}</span>
-                                        <span className="services-faq-plus">{isOpen ? '-' : '+'}</span>
+                                        <span className="about-faq-plus">{isOpen ? '-' : '+'}</span>
                                     </button>
-                                    <div className="services-faq-answer-wrap">
-                                        <div className="services-faq-answer">
+                                    <div className="about-faq-answer-wrap">
+                                        <div className="about-faq-answer">
                                             <p>{item.a}</p>
                                         </div>
                                     </div>
