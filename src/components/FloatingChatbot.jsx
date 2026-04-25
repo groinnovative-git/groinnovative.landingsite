@@ -129,7 +129,7 @@ const PRICING_RESPONSES = {
     software:    `Software development cost depends on modules, user roles, dashboard features, database, automation, integrations, and project complexity. Please contact ${CONTACT} to discuss your requirement and get a quotation.`,
     seo:         `SEO pricing depends on your website condition, target keywords, competition, local/global targeting, and monthly optimization needs. Please contact ${CONTACT} for an SEO package discussion.`,
     marketing:   `Digital marketing cost depends on campaign type, ad budget, platform, creatives, landing page, and lead generation goals. Please contact ${CONTACT} for campaign planning and pricing.`,
-    maintenance: `Website maintenance cost depends on update frequency, bug fixes, backup, security checks, speed optimization, and monthly support needs. Please contact ${CONTACT} for maintenance pricing.`,
+    maintenance: `WebWebsite Maintenance cost depends on update frequency, bug fixes, backup, security checks, speed optimization, and monthly support needs. Please contact ${CONTACT} for maintenance pricing.`,
     branding:    `Logo and poster design cost depends on the design requirement, number of concepts, revisions, branding needs, and final deliverables. Please contact ${CONTACT} for the exact design quotation.`,
 }
 
@@ -147,7 +147,7 @@ const SERVICE_RESPONSES = {
     software:    `Yes, we build custom software, admin panels, dashboards, portals, and business applications based on your requirement. Please contact ${CONTACT} to discuss your project.`,
     seo:         `Yes, Groinnovative provides SEO optimization to improve your website's visibility, keyword ranking, and search performance. We do not give fake ranking guarantees. Please contact ${CONTACT} for SEO discussion.`,
     marketing:   `Yes, we help with digital marketing, lead generation, ad campaigns, social media promotion, and online business growth. Please contact ${CONTACT} for campaign planning.`,
-    maintenance: `Yes, we provide site maintenance including website updates, bug fixes, speed improvement, backup, and security checks. Please contact ${CONTACT} for maintenance support.`,
+    maintenance: `Yes, we provide Website Maintenance including website updates, bug fixes, speed improvement, backup, and security checks. Please contact ${CONTACT} for maintenance support.`,
     branding:    `Yes, Groinnovative provides logo, poster, banner, social media creative, flyer, brochure, and branding design services. Please contact ${CONTACT} for your design requirement.`,
 }
 
@@ -291,11 +291,11 @@ function getBotReply(rawMessage) {
 
     // 8. Irrelevant topic
     if (hasAny(message, IRRELEVANT_KEYWORDS)) {
-        return `I can help you with Groinnovative services like website creation, software development, SEO, digital marketing, site maintenance, logo, and poster design. For direct support, please contact ${CONTACT}.`
+        return `I can help you with Groinnovative services like website creation, software development, SEO, digital marketing, Website Maintenance, logo, and poster design. For direct support, please contact ${CONTACT}.`
     }
 
     // 9. Unknown fallback
-    return `Thanks for reaching out! We can help with website creation, software development, SEO, digital marketing, site maintenance, logo, and poster design. Please contact ${CONTACT} for direct support.`
+    return `Thanks for reaching out! We can help with website creation, software development, SEO, digital marketing, Website Maintenance, logo, and poster design. Please contact ${CONTACT} for direct support.`
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -468,7 +468,7 @@ export default function FloatingChatbot() {
                             handleNavigate(
                                 '/services',
                                 'services page open pannunga',
-                                'Opening the Services page. You can check Website Creation, Software Development, SEO, Digital Marketing, Site Maintenance, and Logo & Poster Creation there.'
+                                'Opening the Services page. You can check Website Creation, Software Development, SEO, Digital Marketing, Website Maintenance, and Logo & Poster Creation there.'
                             )
                         }
                     >

@@ -1,16 +1,23 @@
 /**
  * Centralized SEO Configuration — Single Source of Truth
  *
- * Change BASE_URL when switching from Vercel preview → production domain.
- * All per-page SEO data is defined here for easy maintenance.
+ * All SEO URLs derive from VITE_SITE_URL.
+ * Set VITE_SEO_ENV=testing on Vercel preview builds to add noindex.
+ * Set VITE_SEO_ENV=production when the final .com domain is live.
  */
 
 // ─── Domain ─────────────────────────────────────────────────────
-export const BASE_URL = 'https://groinnovative.in'
+export const BASE_URL =
+    (import.meta.env.VITE_SITE_URL || 'https://groinnovative.com').replace(/\/+$/, '')
+
+// ─── Environment Flag ───────────────────────────────────────────
+// When true, all pages get noindex,nofollow — prevents Google from
+// treating Vercel preview URLs as the real site.
+export const IS_TESTING = import.meta.env.VITE_SEO_ENV === 'testing'
 
 // ─── Brand ──────────────────────────────────────────────────────
-export const SITE_NAME = 'Gro Innovative'
-export const BRAND_TAGLINE = 'Gro Innovative | Software & IT Solutions'
+export const SITE_NAME = 'Groinnovative'
+export const BRAND_TAGLINE = 'Groinnovative | Software Development & Digital Solutions'
 export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.png`
 
 // ─── Geo (Coimbatore HQ) ───────────────────────────────────────
@@ -25,7 +32,7 @@ export const GEO = {
 
 // ─── Contact / NAP ──────────────────────────────────────────────
 export const NAP = {
-    name: 'Gro Innovative',
+    name: 'Groinnovative',
     streetAddress: 'Coimbatore',
     city: 'Coimbatore',
     state: 'Tamil Nadu',
@@ -46,64 +53,55 @@ export const SOCIAL_PROFILES = [
 
 // ─── Service Areas ──────────────────────────────────────────────
 export const SERVICE_AREAS = [
-    'Coimbatore', 'Rajapalayam', 'Karur', 'Virudhunagar',
-    'Madurai', 'Theni', 'Tamil Nadu', 'South India', 'India',
+    'Coimbatore', 'Chennai', 'Madurai', 'Tiruchirappalli',
+    'Salem', 'Erode', 'Tiruppur', 'Hosur', 'Bengaluru',
+    'Tamil Nadu', 'India',
 ]
 
 // ─── Per-Page SEO Config ────────────────────────────────────────
 
 export const PAGE_SEO = {
     home: {
-        title: 'Best Software Development Company in Coimbatore | Gro Innovative',
+        title: 'Groinnovative | Digital Solutions & Software Development Company',
         description:
-            'Gro Innovative is a top-rated software development & IT solutions company in Coimbatore, Tamil Nadu. We deliver web development, mobile apps, SEO, digital marketing, and cloud solutions for startups & businesses across Rajapalayam, Karur, Madurai & South India.',
+            'Groinnovative builds high-performance websites, custom software, SEO systems, digital marketing campaigns, maintenance workflows, and brand visuals for businesses worldwide.',
         keywords:
-            'software company Coimbatore, best IT company Coimbatore, web development company Coimbatore, app development Coimbatore, Gro Innovative, software company Tamil Nadu, IT solutions Rajapalayam, affordable software company Coimbatore, startup software development Coimbatore, MVP development company India',
+            'software development company in Tamil Nadu, software development company in India, website development company in Tamil Nadu, custom software development India, digital marketing company Tamil Nadu, SEO services India',
         path: '/',
     },
 
     about: {
-        title: "About Gro Innovative — Coimbatore's Trusted Software & IT Partner",
+        title: 'About Groinnovative | Global Digital Solutions Company',
         description:
-            'Learn about Gro Innovative — a software development company headquartered in Coimbatore, Tamil Nadu, serving businesses across Rajapalayam, Karur, Madurai & South India with world-class web, mobile, and AI-powered solutions.',
+            'Learn about Groinnovative. We are a digital solutions company helping startups, founders, and enterprises globally to build scalable software, websites, and marketing systems.',
         keywords:
-            'about Gro Innovative, software company Tamil Nadu, IT company Coimbatore, Gro Innovative team, software company Rajapalayam, IT solutions Karur, Coimbatore tech company',
+            'about Groinnovative, global software company, worldwide digital solutions, digital growth partner, international software development',
         path: '/about',
     },
 
     services: {
-        title: 'Software Development & IT Services in Coimbatore, Tamil Nadu | Gro Innovative',
+        title: 'Services | Website, Software, SEO & Digital Marketing Company in India',
         description:
-            'Explore our services: website creation, custom software development, mobile app development, SEO optimization, digital marketing, site maintenance, and branding — delivered from Coimbatore to clients across Tamil Nadu & India.',
+            'Explore Groinnovative services including website creation, custom software development, SEO optimization, digital marketing, site maintenance, logo design, and poster creation for businesses worldwide.',
         keywords:
-            'web development Coimbatore, app development Coimbatore, SEO services Tamil Nadu, software development services Coimbatore, React development company India, custom software Tamil Nadu, e-commerce development Coimbatore, mobile app development Coimbatore',
+            'website creation services, software development services, SEO optimization services, digital marketing services, website maintenance, logo design, poster design, global IT services',
         path: '/services',
     },
 
     contact: {
-        title: 'Contact Gro Innovative — Software Company in Coimbatore, Tamil Nadu',
+        title: 'Contact Groinnovative | Website & Software Development Enquiry',
         description:
-            'Get in touch with Gro Innovative for a free consultation. Located in Coimbatore, Tamil Nadu — we serve startups and businesses across Rajapalayam, Karur, Madurai & all of India. Call +91 9345306018.',
+            'Contact Groinnovative for website creation, software development, SEO optimization, digital marketing, site maintenance, logo design, and poster creation services globally.',
         keywords:
-            'contact Gro Innovative, software company Coimbatore contact, IT company near me Tamil Nadu, Gro Innovative phone number, Gro Innovative email, software quotation Coimbatore',
+            'contact Groinnovative, global software company contact, website development enquiry, Groinnovative phone number, Groinnovative email',
         path: '/contact',
     },
 
     notFound: {
-        title: 'Page Not Found | Gro Innovative',
+        title: 'Page Not Found | Groinnovative',
         description: 'The page you are looking for does not exist or has been moved.',
         keywords: '',
         path: '/404',
         noindex: true,
     },
-
-    // Uncomment when the page is added to the router:
-    // getAQuote: {
-    //   title: 'Get a Quote — Affordable Software Development | Gro Innovative Coimbatore',
-    //   description:
-    //     'Request a free quote for website development, mobile apps, SEO, or custom software from Gro Innovative — affordable IT solutions in Coimbatore, Tamil Nadu.',
-    //   keywords:
-    //     'get a quote software development, affordable IT solutions Coimbatore, software quotation Tamil Nadu, website cost Coimbatore',
-    //   path: '/get-a-quote',
-    // },
 }

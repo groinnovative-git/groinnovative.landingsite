@@ -30,11 +30,11 @@ export default function Navbar() {
     // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (open) {
-            document.body.classList.add('menu-open')
+            document.body.classList.add('menu-open'); document.documentElement.classList.add('menu-open');
         } else {
-            document.body.classList.remove('menu-open')
+            document.body.classList.remove('menu-open'); document.documentElement.classList.remove('menu-open');
         }
-        return () => document.body.classList.remove('menu-open')
+        return () => document.body.classList.remove('menu-open'); document.documentElement.classList.remove('menu-open');
     }, [open])
 
     // Build class string
@@ -51,7 +51,7 @@ export default function Navbar() {
 
                     {/* LEFT — Logo (independent; any size won't affect pill) */}
                     <Link to="/" className="gi-logo" onClick={() => { setOpen(false); window.scrollTo(0, 0); }}>
-                        <img src={logoImg} alt="GroInnovative" className="gi-logo-img" width="180" height="42" fetchPriority="high" />
+                        <img src={logoImg} alt="Groinnovative software development company logo" className="gi-logo-img" width="180" height="42" fetchPriority="high" />
                     </Link>
 
                     {/* RIGHT — Pill (desktop) + Hamburger (mobile/tablet) */}
@@ -100,6 +100,12 @@ export default function Navbar() {
                     </div>
                 </div>
             </header>
+
+            {/* Mobile menu overlay to block and freeze background */}
+            <div 
+                className={`gi-mobile-overlay${open ? ' open' : ''}`} 
+                onClick={() => setOpen(false)}
+            />
 
             {/* Mobile / tablet slide-in menu */}
             <div className={`gi-mobile-menu${open ? ' open' : ''}`}>
@@ -154,12 +160,12 @@ export default function Navbar() {
                     </a>
                     <div className="mobile-contact-item">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                        <span>Coimbatore, Tamil Nadu</span>
+                        <span>Available Worldwide</span>
                     </div>
                 </div>
 
                 <div className="mobile-logo-wrapper" style={{ marginTop: 'auto', paddingTop: '32px', paddingBottom: '16px', width: '100%', display: 'flex' }}>
-                    <img src={logoImg} alt="GroInnovative" className="gi-logo-img" width="180" height="42" style={{ height: '42px', opacity: 0.9 }} />
+                    <img src={logoImg} alt="Groinnovative software development company logo" className="gi-logo-img" width="180" height="42" style={{ height: '42px', opacity: 0.9 }} />
                 </div>
             </div>
         </>

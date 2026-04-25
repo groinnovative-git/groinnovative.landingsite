@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
@@ -9,7 +9,7 @@ import ParticleCanvas from '../components/ParticleCanvas'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
 import { PAGE_SEO } from '../seo/seoConfig'
-import { breadcrumbSchema } from '../seo/schemas'
+import { breadcrumbSchema, organizationSchema, aboutFaqSchema, aboutFaqData } from '../seo/schemas'
 import './About.css'
 
 import useReveal from '../hooks/useReveal'
@@ -151,14 +151,19 @@ const teamRoles = [
 export default function About() {
     useReveal()
     const prefersReduced = useReducedMotion()
+    const [openFaq, setOpenFaq] = useState(null)
 
     return (
         <div className="page-enter about-page">
             <SEO {...PAGE_SEO.about} />
-            <StructuredData data={breadcrumbSchema([
-                { name: 'Home', path: '/' },
-                { name: 'About', path: '/about' },
-            ])} />
+            <StructuredData data={[
+                organizationSchema,
+                aboutFaqSchema,
+                breadcrumbSchema([
+                    { name: 'Home', path: '/' },
+                    { name: 'About', path: '/about' },
+                ]),
+            ]} />
 
             {/* ─── 1. HERO ───────────────────────────────────────────────────── */}
             <section className="hero-section about-hero">
@@ -174,8 +179,8 @@ export default function About() {
                                 Your Digital Growth{' '}
                                 <span className="gradient-text">Partner</span>
                             </h1>
-                            <p className="hero-sub reveal reveal-delay-2" style={{ maxWidth: 640 }}>
-                                Gro Innovative is a forward-thinking digital solutions company that partners with startups, founders, and growing businesses to transform ideas into real, impactful digital products.
+                            <p className="hero-sub reveal reveal-delay-2" style={{ maxWidth: 740 }}>
+                                Groinnovative is a software development and digital services company helping businesses worldwide build websites, custom software, SEO systems, digital marketing campaigns, maintenance workflows, and brand visuals. The company supports business websites, ecommerce platforms, admin panels, dashboards, SEO-ready websites, lead-generation campaigns, and ongoing digital support.
                             </p>
                             <div className="hero-actions reveal reveal-delay-3">
                                 <Link to="/contact" className="btn btn-primary">
@@ -249,7 +254,7 @@ export default function About() {
                         {/* Left — Description */}
                         <motion.div className="who-body-left" variants={slideFromLeft}>
                             <p className="who-lead">
-                                Gro Innovative is a forward-thinking digital solutions company focused on helping startups, founders, and growing businesses build scalable, high-performing digital products.
+                                Groinnovative is a forward-thinking digital solutions company based in Tamil Nadu, focused on helping startups, founders, and growing businesses across India build scalable, high-performing digital products.
                             </p>
                             <p className="who-sub">
                                 We don't just design and develop — we partner with businesses to transform ideas into real, impactful solutions. From strategy to deployment, we combine technology, design, and intelligence to deliver products that are not only visually premium but also performance-driven and business-focused.
@@ -590,6 +595,45 @@ export default function About() {
                                 <p>{t.line}</p>
                             </motion.div>
                         ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ─── GEO FAQ SECTION ────────────────────────────────────────────── */}
+            <section className="services-faq-section section" style={{ background: 'var(--card)' }}>
+                <div className="container">
+                    <div className="section-header services-section-head">
+                        <div className="badge"><span className="badge-dot" />COMPANY FAQ</div>
+                        <h2>Common Questions About Groinnovative</h2>
+                    </div>
+                    <motion.div
+                        className="services-faq-list"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.15 }}
+                    >
+                        {aboutFaqData.map((item, index) => {
+                            const isOpen = openFaq === index
+                            return (
+                                <motion.article className={`services-faq-item card${isOpen ? ' open' : ''}`} key={item.q} variants={cardAnim}>
+                                    <button
+                                        type="button"
+                                        className="services-faq-question"
+                                        onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                                        aria-expanded={isOpen}
+                                    >
+                                        <span>{item.q}</span>
+                                        <span className="services-faq-plus">{isOpen ? '-' : '+'}</span>
+                                    </button>
+                                    <div className="services-faq-answer-wrap">
+                                        <div className="services-faq-answer">
+                                            <p>{item.a}</p>
+                                        </div>
+                                    </div>
+                                </motion.article>
+                            )
+                        })}
                     </motion.div>
                 </div>
             </section>

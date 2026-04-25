@@ -9,6 +9,6 @@ export const SERVICE_NAMES = [
     'Software Development',
     'SEO Optimization',
     'Digital Marketing',
-    'Site Maintenance',
+    'Website Maintenance',
     'Logo & Poster Creation',
 ]

@@ -7,7 +7,7 @@ import ParticleCanvas from '../components/ParticleCanvas'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
 import { PAGE_SEO } from '../seo/seoConfig'
-import { breadcrumbSchema } from '../seo/schemas'
+import { breadcrumbSchema, localBusinessSchema } from '../seo/schemas'
 import './Contact.css'
 
 // ── Web3Forms (admin notification) ────────────────────────────────────────────
@@ -30,7 +30,7 @@ const SERVICES = [
     'Mobile App Development',
     'AI Integration & Automation',
     'SEO Optimization',
-    'Site Maintenance',
+    'Website Maintenance',
     'Digital Marketing',
     'Logo & Poster Design',
     'Other',
@@ -174,10 +174,13 @@ export default function Contact() {
     return (
         <div className="page-enter contact-page">
             <SEO {...PAGE_SEO.contact} />
-            <StructuredData data={breadcrumbSchema([
-                { name: 'Home', path: '/' },
-                { name: 'Contact', path: '/contact' },
-            ])} />
+            <StructuredData data={[
+                localBusinessSchema,
+                breadcrumbSchema([
+                    { name: 'Home', path: '/' },
+                    { name: 'Contact', path: '/contact' },
+                ]),
+            ]} />
 
             {/* ── Hero ──────────────────────────────────────────────────────── */}
             <section className="page-hero" style={{ padding: 0 }}>
@@ -194,7 +197,7 @@ export default function Contact() {
                                 <span className="gradient-text">Great Together</span>
                             </h1>
                             <p className="hero-sub reveal reveal-delay-2" style={{ maxWidth: 580 }}>
-                                Tell us about your project. We'll get back to you with a plan not a sales pitch within 24 hours.
+                                Tell us about your project. We serve clients worldwide and will get back to you with a plan — not a sales pitch — within 24 hours.
                             </p>
                         </div>
                     </div>
@@ -223,7 +226,7 @@ export default function Contact() {
                                     },
                                     {
                                         icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>,
-                                        label: 'Address', val: 'Coimbatore, Tamil Nadu, India',
+                                        label: 'Coverage', val: 'Available Worldwide',
                                     },
                                     {
                                         icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>,
@@ -412,9 +415,9 @@ export default function Contact() {
                             className={`toast-notif toast-notif--${status.startsWith('success') ? 'success' : 'error'}`}
                             role="alert"
                             aria-live="polite"
-                            initial={{ opacity: 0, y: 64, scale: 0.94 }}
+                            initial={{ opacity: 0, y: -64, scale: 0.94 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 32, scale: 0.94 }}
+                            exit={{ opacity: 0, y: -32, scale: 0.94 }}
                             transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                         >
                             {/* Icon */}

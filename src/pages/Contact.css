@@ -30,14 +30,14 @@
 }
 
 .contact-info>p {
-    margin-bottom: 32px;
+    margin-top: 32px;
 }
 
 .info-items {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 32px;
+    margin-top: 32px;
 }
 
 .info-item {
@@ -165,7 +165,7 @@
 
 .success-icon {
     font-size: 3.5rem;
-    margin-bottom: 16px;
+    margin-top: 24px;
 }
 
 .success-state h3 {
@@ -476,7 +476,7 @@
 /* ── Floating Toast Notification ───────────────────────────────────────────── */
 .toast-notif {
     position: fixed;
-    bottom: 32px;
+    top: 32px;
     right: 32px;
     z-index: 9999;
     display: flex;
@@ -598,7 +598,7 @@
 
 @media (max-width: 520px) {
     .toast-notif {
-        bottom: 16px;
+        top: 24px;
         right: 12px;
         left: 12px;
         min-width: 0;

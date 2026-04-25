@@ -1,12 +1,10 @@
-# Gro Innovative — robots.txt
-# https://groinnovative.in
+# Groinnovative — robots.txt
+# https://groinnovative.com
 
 User-agent: *
 Allow: /
 
 Disallow: /api/
-Disallow: /static/
-Disallow: /assets/
 
-# Sitemap location (absolute URL)
-Sitemap: https://groinnovative.in/sitemap.xml
+# Sitemap location (absolute URL — update if domain changes)
+Sitemap: https://groinnovative.com/sitemap.xml

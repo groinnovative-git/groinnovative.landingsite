@@ -7,7 +7,7 @@ import EyeFollowIcon from '../components/EyeFollowIcon'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
 import { PAGE_SEO } from '../seo/seoConfig'
-import { breadcrumbSchema, faqSchema } from '../seo/schemas'
+import { organizationSchema, localBusinessSchema, websiteSchema, breadcrumbSchema, faqSchema } from '../seo/schemas'
 import './Home.css'
 
 
@@ -35,12 +35,12 @@ function CountUp({ target, suffix = '' }) {
 }
 
 const services = [
-    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" /></svg>, title: 'Website Creation', desc: 'High converting landing pages and business websites built for speed, SEO, and modern UI optimized for leads and trust.', color: 'rgba(16, 185, 129, 0.1)' },
-    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>, title: 'SEO Optimization', desc: 'Technical SEO, on-page optimization, keyword strategy, and performance fixes to improve rankings, visibility, and organic growth.', color: 'rgba(16, 185, 129, 0.1)' },
-    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>, title: 'Software Development', desc: 'Custom web and mobile applications using modern stacks scalable architecture, clean code, and production ready delivery.', color: 'rgba(16, 185, 129, 0.1)' },
-    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>, title: 'Digital Marketing', desc: 'Growth campaigns across search and social content, ads, funnels, and analytics built to generate consistent demand.', color: 'rgba(16, 185, 129, 0.1)' },
-    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>, title: 'Site Maintenance', desc: 'Ongoing updates, security checks, performance tuning, backups, and support to keep your website reliable and fast.', color: 'rgba(16, 185, 129, 0.1)' },
-    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="13.5" cy="6.5" r=".5" /><circle cx="17.5" cy="10.5" r=".5" /><circle cx="8.5" cy="7.5" r=".5" /><circle cx="6.5" cy="12.5" r=".5" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg>, title: 'Logo & Poster Creation', desc: 'Clean, modern brand visuals — logos, posters, and marketing creatives designed for digital and print use.', color: 'rgba(16, 185, 129, 0.1)' },
+    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" /></svg>, title: 'Website Creation', desc: 'Business websites, company websites, ecommerce platforms, portfolio sites, and landing pages built for speed, SEO, and lead generation.', color: 'rgba(16, 185, 129, 0.1)' },
+    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>, title: 'SEO Optimization', desc: 'Technical SEO, on-page SEO, local SEO, keyword strategy, sitemap setup, indexing support, and Google visibility improvement for businesses.', color: 'rgba(16, 185, 129, 0.1)' },
+    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>, title: 'Software Development', desc: 'Custom web applications, admin panels, dashboards, CRM, ERP, booking systems, billing systems, and business automation software.', color: 'rgba(16, 185, 129, 0.1)' },
+    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>, title: 'Digital Marketing', desc: 'Google Ads, Meta Ads, Instagram promotion, social media marketing, lead generation funnels, and landing page campaigns for business growth.', color: 'rgba(16, 185, 129, 0.1)' },
+    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>, title: 'Website Maintenance', desc: 'Website updates, bug fixing, backup, security checks, speed optimization, hosting support, and monthly maintenance for live websites.', color: 'rgba(16, 185, 129, 0.1)' },
+    { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="13.5" cy="6.5" r=".5" /><circle cx="17.5" cy="10.5" r=".5" /><circle cx="8.5" cy="7.5" r=".5" /><circle cx="6.5" cy="12.5" r=".5" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg>, title: 'Logo & Poster Creation', desc: 'Business logos, social media posters, banners, flyers, brochures, and brand visuals designed for digital and print use.', color: 'rgba(16, 185, 129, 0.1)' },
 ]
 
 const stats = [
@@ -79,36 +79,36 @@ const testimonials = [
 
 const homeFaqs = [
     {
-        q: 'What services does GroInnovative provide?',
-        a: 'We provide website development, custom software development, SEO optimization, digital marketing support, maintenance, and brand creative services aligned to business growth.',
+        q: 'What services does Groinnovative provide?',
+        a: 'Groinnovative provides website creation, custom software development, SEO optimization, digital marketing, website maintenance, logo design, and poster creation for businesses worldwide.',
     },
     {
-        q: 'How long does a project usually take?',
-        a: 'Small websites can move quickly, while larger software or growth-focused projects take longer. We define timelines clearly after understanding your scope and priorities.',
+        q: 'Does Groinnovative build custom software?',
+        a: 'Yes. Groinnovative builds custom software such as admin panels, dashboards, business portals, CRM systems, ERP systems, booking systems, and automation tools based on client requirements.',
     },
     {
-        q: 'Do you provide support after launch?',
-        a: 'Yes. We support ongoing updates, fixes, optimization, maintenance, and scaling so your product stays reliable after go-live.',
+        q: 'Does Groinnovative provide SEO services?',
+        a: 'Yes. Groinnovative provides technical SEO, on-page SEO, keyword planning, local SEO, indexing support, sitemap setup, and search-friendly website structure to improve Google visibility.',
     },
     {
-        q: 'Can you build SEO-ready websites from the start?',
-        a: 'Yes. We structure websites with performance, mobile responsiveness, technical SEO basics, and conversion-ready content flow in mind from the beginning.',
+        q: 'Does Groinnovative provide website maintenance?',
+        a: 'Yes. Groinnovative supports website updates, bug fixes, backups, speed optimization, security checks, hosting support, and monthly maintenance to keep your site running smoothly.',
     },
     {
-        q: 'Can you redesign or improve an existing website?',
-        a: 'Yes. We can refresh design, improve performance, restructure content, fix UX issues, and strengthen conversion flow without starting from scratch unless that is the better option.',
+        q: 'Where does Groinnovative provide services?',
+        a: 'Groinnovative is a global digital services company supporting clients worldwide with web development, software, and marketing solutions.',
     },
     {
-        q: 'Do you work with startups as well as established businesses?',
-        a: 'Yes. We work with startups, local businesses, service brands, and growing companies that need clear digital systems and practical execution.',
+        q: 'How much does website development cost?',
+        a: 'Website development cost depends on the number of pages, design complexity, features, domain, hosting, content, forms, payment gateway, and support requirements. Contact Groinnovative for a project-specific estimate.',
     },
     {
-        q: 'How do you estimate project pricing?',
-        a: 'Pricing depends on scope, complexity, timelines, and the features required. After understanding your requirements, we recommend the right direction and provide clear scope-based pricing.',
+        q: 'How long does it take to build a website?',
+        a: 'The timeline depends on the project scope. A simple business website can be completed in a few weeks, while ecommerce websites, custom software, or feature-rich platforms may take more time depending on complexity.',
     },
     {
-        q: 'What do you need from us to get started?',
-        a: 'Usually we need your business goals, target audience, current pain points, references if any, and clarity on what outcome you want from the website or software.',
+        q: 'Can Groinnovative build both website and SEO setup?',
+        a: 'Yes. Groinnovative can build a responsive business website with SEO-ready structure, technical setup, sitemap, indexing support, and search-friendly page content — all in one project.',
     },
 ]
 
@@ -187,6 +187,7 @@ const homeSectionItem = {
 export default function Home() {
     useReveal()
     const [openFaq, setOpenFaq] = useState(0)
+    const [isPaused, setIsPaused] = useState(false)
     const prefersReducedMotion = useReducedMotion()
     const servicesRef = useRef(null)
     const servicesInView = useInView(servicesRef, { once: true, amount: 0.28 })
@@ -207,6 +208,9 @@ export default function Home() {
         <div className="page-enter home-page">
             <SEO {...PAGE_SEO.home} />
             <StructuredData data={[
+                organizationSchema,
+                localBusinessSchema,
+                websiteSchema,
                 breadcrumbSchema([{ name: 'Home', path: '/' }]),
                 faqSchema,
             ]} />
@@ -222,12 +226,12 @@ export default function Home() {
                             </div>
                             <h1 className="hero-headline reveal reveal-delay-1">
                                 <span className="hero-nowrap-line">
-                                    Software Development & AI Solutions
+                                    Software Development & Digital Solutions
                                 </span><br />
                                 for Modern Businesses
                             </h1>
                             <p className="hero-sub reveal reveal-delay-2">
-                                We design and build scalable SaaS platforms, intelligent websites, and automation-ready digital products engineered for performance, visibility, and long-term growth.
+                                Groinnovative helps businesses worldwide build modern websites, scalable software applications, SEO-ready platforms, digital marketing campaigns, maintenance workflows, and brand visuals.
                             </p>
                             <div className="hero-actions reveal reveal-delay-3">
                                 <Link to="/contact" className="btn btn-primary">
@@ -344,9 +348,9 @@ export default function Home() {
                     <motion.div variants={fadeInUpBadge} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="badge why-section-badge"><span className="badge-dot" />WHY GROINNOVATIVE</motion.div>
                     <div className="why-inner">
                         <div className="why-text">
-                            <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>Your Technology Partner for Scalable Growth</motion.h2>
+                            <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>Why Choose Groinnovative for Website and Software Development?</motion.h2>
                             <motion.p variants={fadeInUpP} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 32 }}>
-                                We build scalable digital systems that turn ideas into real business growth combining AI powered software development, performance focused web solutions, and strategic digital execution.
+                                Groinnovative is a software development and web design company that builds scalable digital systems for businesses worldwide. From custom web applications and responsive business websites to SEO optimization and digital marketing, we combine clean execution with long-term growth support.
                             </motion.p>
                             <motion.div variants={staggerContainerLeft} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>
                                 {whyUs.map((w) => (
@@ -395,11 +399,15 @@ export default function Home() {
                     </div>
                 </div>
                 <motion.div
-                    className="testimonials-marquee"
+                    className={`testimonials-marquee ${isPaused ? 'is-paused' : ''}`}
                     variants={homeSectionItem}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                    onClick={() => setIsPaused(!isPaused)}
+                    onTouchStart={() => setIsPaused(!isPaused)}
                 >
                     <div className="testimonial-row testimonial-row-left">
                         <div className="testimonial-track">

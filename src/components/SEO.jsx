@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { BASE_URL, SITE_NAME, DEFAULT_OG_IMAGE, GEO } from '../seo/seoConfig'
+import { BASE_URL, SITE_NAME, DEFAULT_OG_IMAGE, GEO, IS_TESTING } from '../seo/seoConfig'
 
 /**
  * Enhanced SEO component — manages all <head> tags per page.
@@ -12,6 +12,10 @@ import { BASE_URL, SITE_NAME, DEFAULT_OG_IMAGE, GEO } from '../seo/seoConfig'
  *   ogImage     – (optional) absolute URL to OG image
  *   noindex     – (optional) if true, tells crawlers not to index this page
  *   geo         – (optional) override default geo object
+ *
+ * Environment behaviour:
+ *   When VITE_SEO_ENV=testing, ALL pages are set to noindex,nofollow
+ *   to prevent Google from indexing Vercel preview deployments.
  */
 export default function SEO({
     title,
@@ -25,16 +29,20 @@ export default function SEO({
     const url = `${BASE_URL}${path}`
     const image = ogImage || DEFAULT_OG_IMAGE
 
+    // In testing mode, force noindex on every page
+    const shouldNoindex = IS_TESTING || noindex
+
     return (
         <Helmet>
             {/* Core */}
             <title>{title}</title>
             <meta name="description" content={description} />
             {keywords && <meta name="keywords" content={keywords} />}
+            <meta name="author" content="Groinnovative" />
             <link rel="canonical" href={url} />
 
             {/* Robots */}
-            {noindex
+            {shouldNoindex
                 ? <meta name="robots" content="noindex, nofollow" />
                 : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
             }

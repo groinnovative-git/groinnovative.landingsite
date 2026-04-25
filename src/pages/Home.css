@@ -980,6 +980,9 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
     font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    border: none;
 }
 
 .home-faq-plus {
@@ -993,6 +996,7 @@
     justify-content: center;
     color: var(--primary);
     font-size: 1.1rem;
+    pointer-events: none;
 }
 
 .home-faq-answer-wrap {

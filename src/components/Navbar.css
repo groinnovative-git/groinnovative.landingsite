@@ -357,3 +357,7 @@ a.mobile-contact-item:hover {
         display: none;
     }
 }
+
+.gi-mobile-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 1999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s; touch-action: none; }
+.gi-mobile-overlay.open { opacity: 1; visibility: visible; }
+

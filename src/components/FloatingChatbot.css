@@ -13,11 +13,11 @@
 }
 
 /* ── 2. Hide contact stack while chatbot is open ── */
-.chatbot-open .floating-contact-stack {
-  opacity: 0;
+.chatbot-open .floating-contact-stack,
+.chatbot-open .scroll-top-btn {
+  opacity: 0 !important;
   pointer-events: none;
-  transform: translateY(6px);
-  transition: opacity 0.22s ease, transform 0.22s ease;
+  transform: translateY(12px) !important;
 }
 
 /* ── 3. Trigger Button ── */
@@ -404,27 +404,27 @@
 /* ── 12. Mobile ── */
 @media (max-width: 600px) {
   .chatbot-widget {
-    right: 12px;
+    right: 14px;
     bottom: 76px;
   }
 
   .chatbot-window {
-    width: calc(100vw - 24px);
+    width: calc(100vw - 28px);
     max-width: 390px;
     /*
      * Mobile budget:
      *   widget bottom  76px
-     *   trigger height 40px
+     *   trigger height 48px
      *   window margin  12px
      *   top clearance  12px
-     *   ───────────────── 140px reserved
+     *   ───────────────── 148px reserved
      */
     height: 520px;
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - 148px);
   }
 
   .chatbot-trigger {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
   }
 }
