@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Search, PenTool, Code, Bug, Rocket, LifeBuoy } from 'lucide-react'
+import {
+    Search, PenTool, Code, Bug, Rocket, LifeBuoy,
+    Eye, Target, Zap, Star, Users, Shield, TrendingUp, RefreshCw
+} from 'lucide-react'
 import ParticleCanvas from '../components/ParticleCanvas'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
@@ -13,11 +16,11 @@ import useReveal from '../hooks/useReveal'
 
 /* ── Framer Motion variants ── */
 const fadeUp = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } }
 }
 const fadeUpBlur = {
-    hidden: { opacity: 0, y: 14, filter: 'blur(6px)' },
+    hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: 'easeOut' } }
 }
 const stagger = {
@@ -26,51 +29,30 @@ const stagger = {
 }
 const staggerFast = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.08, delayChildren: 0.08 } }
+    visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } }
 }
-
-/* Vision: from left / Mission: from right */
 const slideFromLeft = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: 'easeOut' } }
+    hidden: { opacity: 0, x: -32 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 }
 const slideFromRight = {
-    hidden: { opacity: 0, x: 30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: 'easeOut' } }
+    hidden: { opacity: 0, x: 32 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 }
-
-/* Why Us: left column from left, right from right */
-const slideTextLeft = {
-    hidden: { opacity: 0, x: -24 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+const cardAnim = {
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 }
-const slideCheckRight = {
-    hidden: { opacity: 0, x: 24 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+const lineGrow = {
+    hidden: { scaleX: 0 },
+    visible: { scaleX: 1, transition: { duration: 0.7, ease: 'easeOut', delay: 0.2 } }
 }
-
-/* Check icon scale pop */
 const checkPop = {
     hidden: { opacity: 0, scale: 0.4 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }
 }
 
-/* Heading underline */
-const lineGrow = {
-    hidden: { scaleX: 0 },
-    visible: { scaleX: 1, transition: { duration: 0.7, ease: 'easeOut', delay: 0.2 } }
-}
-
-const cardAnim = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
-}
-const teamCardAnim = {
-    hidden: { opacity: 0, y: 18, filter: 'blur(4px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: 'easeOut' } }
-}
-
-/* ── Count-up component (same pattern as home page) ── */
+/* ── Count-up component ── */
 function CountUp({ target, prefersReduced }) {
     const ref = useRef(null)
     useEffect(() => {
@@ -95,6 +77,67 @@ function CountUp({ target, prefersReduced }) {
     return <span ref={ref} className="team-count">0</span>
 }
 
+/* ── Data ── */
+const expertiseItems = [
+    'Product design & UI/UX engineering',
+    'Scalable web & software development',
+    'AI-powered automation & workflows',
+    'Business-focused digital transformation',
+]
+
+const coreValues = [
+    { icon: Zap, title: 'Innovation First', desc: 'Always exploring smarter and better solutions' },
+    { icon: Star, title: 'Quality Over Everything', desc: 'Clean, scalable, and maintainable code' },
+    { icon: Users, title: 'User-Centric Thinking', desc: 'Every product is built for real users' },
+    { icon: Shield, title: 'Transparency & Trust', desc: 'Clear communication at every step' },
+    { icon: TrendingUp, title: 'Performance Driven', desc: 'Focused on results, not just delivery' },
+    { icon: RefreshCw, title: 'Continuous Growth', desc: 'Improving with every project we build' },
+]
+
+const whyUsItems = [
+    'Product-first UI/UX with conversion focus',
+    'Clean architecture & scalable systems',
+    'AI-powered automation & smart workflows',
+    'Performance-optimized applications',
+    'Tailor-made business solutions (not templates)',
+    'Long-term support & partnership mindset',
+    'Agile and transparent development process',
+]
+
+const processSteps = [
+    {
+        n: '01', icon: Search, title: 'Discover & Understand',
+        desc: 'Deep dive into your business goals, users, and challenges. Map out scope, technologies, and deliverables.'
+    },
+    {
+        n: '02', icon: PenTool, title: 'Design & Prototype',
+        desc: 'Create intuitive UI/UX with clear user flows. You see exactly what you\'re getting before a single line of code.'
+    },
+    {
+        n: '03', icon: Code, title: 'Develop & Build',
+        desc: 'Scalable, clean, and high-performance development in agile sprints with continuous feedback loops.'
+    },
+    {
+        n: '04', icon: Bug, title: 'Test & Optimize',
+        desc: 'Ensure quality, speed, and reliability across devices. Rigorous automated and manual testing.'
+    },
+    {
+        n: '05', icon: Rocket, title: 'Launch & Scale',
+        desc: 'Smooth deployment with zero downtime, cloud infrastructure setup, and continuous improvements.'
+    },
+    {
+        n: '06', icon: LifeBuoy, title: 'Support & Grow',
+        desc: 'Ongoing support, updates, feature additions, and scaling strategies as your business evolves.'
+    },
+]
+
+const approachSteps = [
+    { num: '01', title: 'Discover', desc: 'Understand business & user needs through research and stakeholder alignment.' },
+    { num: '02', title: 'Design', desc: 'Create engaging experiences with wireframes, UI systems, and prototypes.' },
+    { num: '03', title: 'Develop', desc: 'Build scalable solutions with clean code and modern architecture.' },
+    { num: '04', title: 'Optimize & Grow', desc: 'Improve continuously with data, performance tuning, and ongoing support.' },
+]
+
 const teamRoles = [
     { role: 'UI/UX Designers', count: 2, line: 'Design systems, UX flows, and conversion-focused UI.' },
     { role: 'Flutter Developers', count: 3, line: 'Cross-platform mobile apps with native performance.' },
@@ -102,50 +145,6 @@ const teamRoles = [
     { role: 'Backend Developers', count: 3, line: 'Scalable APIs, databases, and server architecture.' },
     { role: 'QA Testers', count: 3, line: 'Rigorous testing for flawless, production-ready releases.' },
     { role: 'Deployment Engineers', count: 2, line: 'CI/CD pipelines, cloud infra, and zero-downtime deploys.' },
-]
-
-const processSteps = [
-    {
-        n: '01', icon: Search, title: 'Discovery & Scoping',
-        desc: 'We start with a detailed conversation about your goals, timeline, and budget. We map out the project scope, technologies, and deliverables in a clear proposal.'
-    },
-    {
-        n: '02', icon: PenTool, title: 'Design & Prototyping',
-        desc: 'Our designers create wireframes and highfidelity mockups. You see exactly what you\'re getting before a single line of code is written.'
-    },
-    {
-        n: '03', icon: Code, title: 'Agile Development',
-        desc: 'Development in 2-week sprints. You get weekly demos, can give feedback anytime, and always know exactly where your project stands.'
-    },
-    {
-        n: '04', icon: Bug, title: 'Testing & QA',
-        desc: 'Rigorous automated and manual testing across devices and browsers. Performance benchmarks, security reviews, and bug free deployment.'
-    },
-    {
-        n: '05', icon: Rocket, title: 'Launch & Deploy',
-        desc: 'We handle the full deployment to your cloud infrastructure, set up monitoring, and ensure a smooth go live with zero downtime.'
-    },
-    {
-        n: '06', icon: LifeBuoy, title: 'Support & Growth',
-        desc: 'Your product doesn\'t stop at launch. We offer ongoing maintenance, feature additions, and growth consulting as your business scales.'
-    },
-]
-
-/* ── Data ── */
-const checklistItems = [
-    'Clean & Scalable Code',
-    'Modern UI/UX Design',
-    'Performance Optimized',
-    'Custom Business Solutions',
-    'Ongoing Support & Maintenance',
-    'Agile Development Process',
-]
-
-const approachSteps = [
-    { num: '01', title: 'Discover', desc: 'Understand goals, audience, and needs through deep research and stakeholder alignment.' },
-    { num: '02', title: 'Design', desc: 'Create wireframes, UI systems, and prototypes that prioritize usability and conversion.' },
-    { num: '03', title: 'Develop', desc: 'Build scalable solutions with clean code, modern architecture, and seamless integrations.' },
-    { num: '04', title: 'Optimize & Support', desc: 'Performance tuning, SEO refinement, ongoing maintenance, and continuous improvement.' },
 ]
 
 /* ══════════════════════════════════════════════════════════════════════════════ */
@@ -172,11 +171,11 @@ export default function About() {
                                 <span className="badge-dot" />ABOUT GRO INNOVATIVE
                             </div>
                             <h1 className="hero-headline reveal reveal-delay-1">
-                                Building Smart Digital Growth for{' '}
-                                <span className="gradient-text">Modern Businesses</span>
+                                Your Digital Growth{' '}
+                                <span className="gradient-text">Partner</span>
                             </h1>
                             <p className="hero-sub reveal reveal-delay-2" style={{ maxWidth: 640 }}>
-                                Gro Innovative builds scalable websites, software, and AI-integrated solutions that help businesses launch faster, convert better, and grow sustainably with strong design, clean engineering, and long-term support.
+                                Gro Innovative is a forward-thinking digital solutions company that partners with startups, founders, and growing businesses to transform ideas into real, impactful digital products.
                             </p>
                             <div className="hero-actions reveal reveal-delay-3">
                                 <Link to="/contact" className="btn btn-primary">
@@ -191,7 +190,6 @@ export default function About() {
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>NDA Protected</span>
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>Remote Friendly</span>
                             </div>
-                            {/* ── Scroll indicator ── */}
                             <div className="scroll-indicator" aria-hidden="true">
                                 <span className="scroll-indicator-label">Scroll Down</span>
                                 <div className="scroll-indicator-mouse">
@@ -203,43 +201,88 @@ export default function About() {
                 </div>
             </section>
 
-            {/* ─── 2. WHO WE ARE ─────────────────────────────────────────────── */}
-            <section className="section about-who">
+            {/* ─── 2. WHO WE ARE — Editorial Layout ───────────────────────── */}
+            <section className="section about-who-section">
                 <div className="container">
-                    <div className="about-who-inner">
-                        <div className="about-who-text">
-                            <div className="badge reveal"><span className="badge-dot" />WHO WE ARE</div>
-                            <h2 className="reveal reveal-delay-1">Who We Are</h2>
-                            <p className="reveal reveal-delay-2" style={{ marginBottom: 32 }}>
-                                Gro Innovative is a modern digital solutions company helping startups, founders, and growing businesses build high performing digital products. We combine strategy, UI/UX design, development, automation, and AI integration to create solutions that are visually premium, technically strong, scalable, and business-focused.
-                            </p>
-                            <motion.ul
-                                className="about-highlights"
-                                variants={stagger}
+
+                    {/* Centered Header */}
+                    <div className="who-header">
+                        <motion.div
+                            className="badge who-badge"
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                        >
+                            <span className="badge-dot" />WHO WE ARE
+                        </motion.div>
+                        <motion.h2
+                            className="who-headline"
+                            variants={fadeUpBlur}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                        >
+                            We Don't Just Build —{' '}
+                            <span className="gradient-text">We Partner</span>
+                        </motion.h2>
+                        {!prefersReduced && (
+                            <motion.div
+                                className="vm-underline"
+                                variants={lineGrow}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true, amount: 0.2 }}
-                            >
-                                {[
-                                    'Product first UI/UX and conversion focused design',
-                                    'Clean architecture and scalable development',
-                                    'AI-enabled workflows and practical automation',
-                                ].map(item => (
-                                    <motion.li key={item} variants={cardAnim}>
-                                        <span className="about-check">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-                                        </span>
-                                        {item}
-                                    </motion.li>
-                                ))}
-                            </motion.ul>
-                        </div>
+                                viewport={{ once: true, amount: 0.5 }}
+                                style={{ margin: '18px auto 0' }}
+                            />
+                        )}
                     </div>
+
+                    {/* Body: Text | Divider | Pillars */}
+                    <motion.div
+                        className="who-body"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
+                        {/* Left — Description */}
+                        <motion.div className="who-body-left" variants={slideFromLeft}>
+                            <p className="who-lead">
+                                Gro Innovative is a forward-thinking digital solutions company focused on helping startups, founders, and growing businesses build scalable, high-performing digital products.
+                            </p>
+                            <p className="who-sub">
+                                We don't just design and develop — we partner with businesses to transform ideas into real, impactful solutions. From strategy to deployment, we combine technology, design, and intelligence to deliver products that are not only visually premium but also performance-driven and business-focused.
+                            </p>
+                            <p className="who-sub">
+                                We believe in building solutions that{' '}
+                                <strong className="who-highlight">grow with your business</strong>,
+                                not just software that works.
+                            </p>
+                        </motion.div>
+
+                        {/* Center — Vertical Divider */}
+                        <motion.div className="who-divider-v" variants={fadeUp} />
+
+                        {/* Right — Numbered Pillars */}
+                        <motion.div className="who-body-right" variants={slideFromRight}>
+                            <p className="who-pillars-label">What We Stand For</p>
+                            <div className="who-pillars">
+                                {expertiseItems.map((item, i) => (
+                                    <motion.div key={item} className="who-pillar" variants={cardAnim}>
+                                        <span className="who-pillar-num">0{i + 1}</span>
+                                        <span className="who-pillar-text">{item}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
                 </div>
             </section>
 
-            {/* ─── 3. VISION & MISSION (Fix #1: tight spacing, Fix #3A: premium anim) ── */}
-            <section className="section section-alt about-vm-section">
+            {/* ─── 3. VISION • MISSION • CORE VALUES — Combined ────────────── */}
+            <section className="section section-alt about-vmv-section">
                 <div className="container">
                     <div className="about-vm-header">
                         <motion.div
@@ -248,6 +291,7 @@ export default function About() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
                             className="badge"
+                            style={{ justifyContent: 'center' }}
                         >
                             <span className="badge-dot" />OUR DIRECTION
                         </motion.div>
@@ -257,9 +301,9 @@ export default function About() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
                         >
-                            Vision & Mission
+                            Vision • Mission •{' '}
+                            <span className="gradient-text">Core Values</span>
                         </motion.h2>
-                        {/* Animated underline */}
                         {!prefersReduced && (
                             <motion.div
                                 className="vm-underline"
@@ -270,33 +314,113 @@ export default function About() {
                             />
                         )}
                     </div>
+
+                    {/* Vision + Mission — Split Layout */}
                     <motion.div
-                        className="vm-grid"
+                        className="split-layout vmv-split"
                         variants={stagger}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.15 }}
+                        viewport={{ once: true, amount: 0.1 }}
                     >
-                        <motion.div variants={prefersReduced ? fadeUp : slideFromLeft} className="card vm-card">
-                            <div className="vm-icon-wrap">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                        <motion.div className="vmv-card glass-vmv-card" variants={prefersReduced ? fadeUp : slideFromLeft}>
+                            <div className="vmv-icon-wrap">
+                                <Eye size={24} strokeWidth={1.8} />
                             </div>
-                            <h3>Vision</h3>
-                            <p>To become a trusted digital growth partner for businesses worldwide by delivering intelligent, scalable, and impactful digital experiences powered by innovation, technology, and creativity.</p>
+                            <h3 className="vmv-card-title">Our Vision</h3>
+                            <p className="vmv-card-desc">
+                                To become a globally trusted digital growth partner, empowering businesses with innovative, scalable, and future-ready technology solutions.
+                            </p>
                         </motion.div>
-                        <motion.div variants={prefersReduced ? fadeUp : slideFromRight} className="card vm-card">
-                            <div className="vm-icon-wrap">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+
+                        <motion.div className="vmv-card glass-vmv-card" variants={prefersReduced ? fadeUp : slideFromRight}>
+                            <div className="vmv-icon-wrap">
+                                <Target size={24} strokeWidth={1.8} />
                             </div>
-                            <h3>Mission</h3>
-                            <p>To help businesses grow faster with modern websites, software applications, AI-integrated solutions, SEO, branding, and ongoing support delivered through an agile, transparent, and results driven process.</p>
+                            <h3 className="vmv-card-title">Our Mission</h3>
+                            <p className="vmv-card-desc">
+                                To help businesses grow faster by delivering modern digital experiences, AI-integrated systems, and scalable products through a transparent, agile, and results-driven approach.
+                            </p>
                         </motion.div>
+                    </motion.div>
+
+                    {/* Core Values — 3-col grid */}
+                    <motion.div
+                        className="values-header"
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
+                        <p className="values-label">Our Core Values</p>
+                    </motion.div>
+                    <motion.div
+                        className="values-grid"
+                        variants={staggerFast}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
+                        {coreValues.map(({ icon: Icon, title, desc }) => (
+                            <motion.div key={title} variants={cardAnim} className="value-card">
+                                <div className="value-icon-wrap">
+                                    <Icon size={20} strokeWidth={1.8} />
+                                </div>
+                                <h4 className="value-title">{title}</h4>
+                                <p className="value-desc">{desc}</p>
+                            </motion.div>
+                        ))}
                     </motion.div>
                 </div>
             </section>
 
-            {/* ─── OUR TEAM ──────────────────────────────────────────────── */}
-            <section className="section about-team-section">
+            {/* ─── 4. WHY CHOOSE US — Split Layout ─────────────────────────── */}
+            {/*<section className="section about-why-section">
+                <div className="container">
+                    <motion.div
+                        className="split-layout why-split"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
+                        <motion.div className="split-left" variants={slideFromLeft}>
+                            <div className="badge"><span className="badge-dot" />WHY CHOOSE US</div>
+                            <h2 className="split-heading">
+                                Why Businesses Choose{' '}
+                                <span className="gradient-text">Gro Innovative</span>
+                            </h2>
+                            <p className="split-desc">
+                                We go beyond development — we build growth-focused digital solutions that are engineered for performance, usability, scalability, and long-term business value.
+                            </p>
+                            <Link to="/contact" className="btn btn-primary" style={{ marginTop: 8, alignSelf: 'flex-start' }}>
+                                Start Your Project <span className="arr">→</span>
+                            </Link>
+                        </motion.div>
+
+                        <motion.div
+                            className="split-right checklist-right"
+                            variants={stagger}
+                        >
+                            {whyUsItems.map((item) => (
+                                <motion.div
+                                    key={item}
+                                    variants={prefersReduced ? cardAnim : slideFromRight}
+                                    className="why-item"
+                                >
+                                    <motion.span className="why-check" variants={checkPop}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                                    </motion.span>
+                                    <span>{item}</span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>*/}
+
+            {/* ─── 5. HOW WE WORK — 6-Step Process ────────────────────────── */}
+            <section className="section section-alt about-process-section">
                 <div className="container">
                     <div className="about-vm-header">
                         <motion.div
@@ -305,8 +429,9 @@ export default function About() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
                             className="badge"
+                            style={{ justifyContent: 'center' }}
                         >
-                            <span className="badge-dot" />OUR TEAM
+                            <span className="badge-dot" />HOW IT WORKS
                         </motion.div>
                         <motion.h2
                             variants={fadeUpBlur}
@@ -314,7 +439,7 @@ export default function About() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
                         >
-                            The Team Behind Gro Innovative
+                            Our <span className="gradient-text">Process</span>
                         </motion.h2>
                         {!prefersReduced && (
                             <motion.div
@@ -332,7 +457,119 @@ export default function About() {
                             viewport={{ once: true, amount: 0.3 }}
                             className="team-subtitle"
                         >
-                            A multi disciplinary team delivering design, development, testing, and deployment with a clean agile workflow.
+                            A clear, agile workflow designed for speed, quality, and long-term growth.
+                        </motion.p>
+                    </div>
+
+                    <motion.div
+                        className="steps-grid"
+                        variants={staggerFast}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
+                        {processSteps.map((s) => {
+                            const Icon = s.icon
+                            return (
+                                <motion.div key={s.n} variants={cardAnim} className="step-card">
+                                    <div className="step-num">{s.n}</div>
+                                    <div className="step-icon-badge">
+                                        <Icon size={20} strokeWidth={1.8} />
+                                    </div>
+                                    <h3>{s.title}</h3>
+                                    <p>{s.desc}</p>
+                                </motion.div>
+                            )
+                        })}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ─── 6. OUR APPROACH — Framework ─────────────────────────────── */}
+            {/*<section className="section about-approach-section">
+                <div className="container">
+                    <motion.div
+                        className="split-layout approach-split"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
+                        <motion.div className="split-left" variants={slideFromLeft}>
+                            <div className="badge"><span className="badge-dot" />OUR APPROACH</div>
+                            <h2 className="split-heading">
+                                From Concept to{' '}
+                                <span className="gradient-text">Success</span>
+                            </h2>
+                            <p className="split-desc">
+                                A proven framework that takes your idea from concept to a high-performing digital product. We focus on <strong style={{ color: 'var(--primary)' }}>long-term value</strong>, not just short-term delivery.
+                            </p>
+                            <div className="approach-flow">
+                                {approachSteps.map((step, i) => (
+                                    <div key={step.num} className="approach-flow-item">
+                                        <span className="approach-flow-label">{step.title}</span>
+                                        {i < approachSteps.length - 1 && (
+                                            <span className="approach-flow-arrow">→</span>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        <motion.div className="split-right approach-cards" variants={staggerFast}>
+                            {approachSteps.map((step) => (
+                                <motion.div key={step.num} variants={cardAnim} className="approach-card-new">
+                                    <span className="approach-num-new">{step.num}</span>
+                                    <div className="approach-card-body">
+                                        <h4 className="approach-card-title">{step.title}</h4>
+                                        <p className="approach-card-desc">{step.desc}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>*/}
+
+            {/* ─── 7. OUR TEAM ──────────────────────────────────────────────── */}
+            <section className="section section-alt about-team-section">
+                <div className="container">
+                    <div className="about-vm-header">
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            className="badge"
+                            style={{ justifyContent: 'center' }}
+                        >
+                            <span className="badge-dot" />OUR TEAM
+                        </motion.div>
+                        <motion.h2
+                            variants={fadeUpBlur}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                        >
+                            The Team Behind <span className="gradient-text">Gro Innovative</span>
+                        </motion.h2>
+                        {!prefersReduced && (
+                            <motion.div
+                                className="vm-underline"
+                                variants={lineGrow}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.5 }}
+                            />
+                        )}
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            className="team-subtitle"
+                        >
+                            A multi-disciplinary team delivering design, development, testing, and deployment with a clean agile workflow.
                         </motion.p>
                     </div>
                     <motion.div
@@ -343,7 +580,11 @@ export default function About() {
                         viewport={{ once: true, amount: 0.1 }}
                     >
                         {teamRoles.map(t => (
-                            <motion.div key={t.role} variants={teamCardAnim} className="team-card">
+                            <motion.div
+                                key={t.role}
+                                variants={{ hidden: { opacity: 0, y: 18, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: 'easeOut' } } }}
+                                className="team-card"
+                            >
                                 <CountUp target={t.count} prefersReduced={prefersReduced} />
                                 <h3>{t.role}</h3>
                                 <p>{t.line}</p>
@@ -353,134 +594,52 @@ export default function About() {
                 </div>
             </section>
 
-            {/* ─── WHY BUSINESSES CHOOSE US ───────────────────────────────── */}
-            <section className="section">
-                <div className="container">
-                    <motion.div
-                        className="why-choose-inner"
-                        variants={stagger}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.1 }}
-                    >
-                        <motion.div className="why-choose-text" variants={prefersReduced ? fadeUp : slideTextLeft}>
-                            <div className="badge"><span className="badge-dot" />WHY US</div>
-                            <h2>Why Businesses Choose Gro Innovative</h2>
-                            <p>
-                                We don't just build digital products we create growth focused solutions engineered for performance, usability, scalability, and long-term business value.
-                            </p>
-                        </motion.div>
-                        <motion.div
-                            className="checklist-grid"
-                            variants={prefersReduced ? stagger : { hidden: {}, visible: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } } }}
-                        >
-                            {checklistItems.map(item => (
-                                <motion.div
-                                    key={item}
-                                    variants={prefersReduced ? cardAnim : slideCheckRight}
-                                    className="checklist-item"
-                                >
-                                    <motion.div className="checklist-icon" variants={checkPop}>
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                                    </motion.div>
-                                    <span>{item}</span>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ─── 5. HOW WE WORK (Migrated 6-Steps) ─────────────────────────── */}
-            <section className="section section-alt about-process-section">
-                <div className="container">
-                    <motion.div
-                        className="process-section-inner"
-                        variants={stagger}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.1 }}
-                    >
-                        <div className="about-vm-header">
-                            <motion.div variants={fadeUp} className="badge">
-                                <span className="badge-dot" />HOW IT WORKS
-                            </motion.div>
-                            <motion.h2 variants={fadeUpBlur}>
-                                How We Work
-                            </motion.h2>
-                            {!prefersReduced && (
-                                <motion.div className="vm-underline" variants={lineGrow} />
-                            )}
-                            <motion.p variants={fadeUp} className="team-subtitle">
-                                A clear, agile workflow designed for speed, quality, and long-term support.
-                            </motion.p>
-                        </div>
-
-                        <div className="process-wrapper">
-                            <motion.div className="steps-grid" variants={staggerFast}>
-                                {processSteps.map((s) => {
-                                    const Icon = s.icon;
-                                    return (
-                                        <motion.div key={s.n} variants={cardAnim} className="step-card">
-                                            <div className="step-num">{s.n}</div>
-                                            <div className="step-icon-badge">
-                                                <Icon size={20} strokeWidth={1.8} />
-                                            </div>
-                                            <h3>{s.title}</h3>
-                                            <p>{s.desc}</p>
-                                        </motion.div>
-                                    );
-                                })}
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ─── 6. OUR APPROACH ───────────────────────────────────────────── */}
-            <section className="section">
-                <div className="container">
-                    <div className="section-header">
-                        <div className="badge reveal"><span className="badge-dot" />THE JOURNEY</div>
-                        <h2 className="reveal reveal-delay-1">Our Approach</h2>
-                        <p className="reveal reveal-delay-2">A proven 4-step process that takes your idea from concept to a high performing digital product.</p>
-                    </div>
-                    <motion.div
-                        className="approach-grid"
-                        variants={stagger}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.15 }}
-                    >
-                        {approachSteps.map(step => (
-                            <motion.div key={step.num} variants={cardAnim} className="approach-card">
-                                <span className="approach-num">{step.num}</span>
-                                <h3>{step.title}</h3>
-                                <p>{step.desc}</p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ─── 7. FINAL CTA ──────────────────────────────────────────────── */}
+            {/* ─── 8. FINAL CTA — Home Style ──────────────────────────────── */}
             <section className="cta-banner section section-dark">
                 <div className="container">
-                    <div className="cta-banner-inner about-cta">
-                        <div className="about-cta-content">
-                            <h2 className="reveal" style={{ color: '#fff' }}>Ready to Build Something Smarter?</h2>
-                            <p className="reveal reveal-delay-1">
-                                Let's transform your idea into a high performing digital product with strategy, design, development, and AI-powered execution.
-                            </p>
-                            <div className="about-cta-btns reveal reveal-delay-2">
-                                <Link to="/contact" className="btn btn-primary btn-lg">
+                    <div className="section-header cta-section-head">
+                        <div className="badge"><span className="badge-dot" />CTA</div>
+                        <h2 className="reveal reveal-delay-1">Start with a Clear Plan, Not Guesswork</h2>
+                        <p className="reveal reveal-delay-2">If you already know you need a better website, stronger system, or cleaner execution path, we can help you define the right move.</p>
+                    </div>
+                    <div className="cta-banner-inner home-cta-panel">
+                        <motion.div
+                            className="home-cta-copy"
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.25 }}
+                        >
+                            <span className="home-cta-eyebrow">What you get</span>
+                            <h2 style={{ color: '#fff' }}>A focused consultation that turns your idea into an actionable roadmap.</h2>
+                            <p>We help you understand what to build, what to avoid, and what the smartest next step looks like for your business right now.</p>
+                            <div className="home-cta-points">
+                                <span>Free project discussion</span>
+                                <span>Clear scope guidance</span>
+                                <span>Launch and support mindset</span>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            className="home-cta-side"
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.25 }}
+                        >
+                            <div className="home-cta-card card">
+                                <span className="home-cta-card-kicker">Next step</span>
+                                <strong>Book a free consultation</strong>
+                                <p>Tell us your goal, current blockers, and timeline. We will help you map the right approach and recommend what actually matters first.</p>
+                                <div className="home-cta-mini-list">
+                                    <span>Website or software direction</span>
+                                    <span>SEO and growth suitability</span>
+                                    <span>Launch and support clarity</span>
+                                </div>
+                                <Link to="/contact" className="btn btn-white btn-lg">
                                     Start Your Project <span className="arr">→</span>
                                 </Link>
-                                <Link to="/services" className="btn btn-secondary btn-lg">
-                                    Explore Services <span className="arr">→</span>
-                                </Link>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

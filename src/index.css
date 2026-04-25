@@ -794,6 +794,33 @@ p {
   box-shadow: 0 0 6px var(--primary);
 }
 
+.who-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 8px 18px;
+  border-radius: 50px;
+
+  background: rgba(0, 255, 150, 0.08);
+  border: 1px solid rgba(0, 255, 150, 0.2);
+
+  color: #00ff9c;
+  font-size: 12px;
+  letter-spacing: 1px;
+
+  margin: 0 auto 20px;
+  /* 🔥 this centers it */
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ff9c;
+}
+
 @keyframes scrollWheelBounce {
   0% {
     transform: translateY(0);
