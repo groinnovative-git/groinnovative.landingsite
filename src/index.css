@@ -711,8 +711,8 @@ p {
 /* ── Scroll-to-top FAB ── */
 .scroll-top-btn {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
+  bottom: 24px;
+  right: 24px;
   z-index: 900;
   width: 44px;
   height: 44px;
@@ -742,10 +742,132 @@ p {
   transform: translateY(-2px);
 }
 
+
+.floating-contact-stack {
+  position: fixed;
+  right: 24px;
+  bottom: 160px;
+  z-index: 910;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.floating-call-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.floating-call-panel {
+  display: grid;
+  gap: 10px;
+  min-width: 220px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--border-strong);
+  background: rgba(8, 8, 8, 0.96);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  pointer-events: none;
+}
+
+.floating-call-wrap.open .floating-call-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating-call-link {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+}
+
+.floating-call-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(16, 185, 129, 0.24);
+  transform: translateY(-1px);
+}
+
+.floating-call-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+}
+
+.floating-call-link strong {
+  font-size: 0.96rem;
+  color: var(--text);
+}
+
+.floating-contact-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.36);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.floating-contact-btn:hover {
+  transform: translateY(-2px);
+}
+
+.floating-whatsapp-btn {
+  background: #25D366;
+}
+
+.floating-whatsapp-btn:hover {
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+}
+
+.floating-call-btn {
+  background: var(--primary);
+}
+
+.floating-call-btn:hover,
+.floating-call-btn.active {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3);
+}
+
 @media (max-width: 600px) {
+  .floating-contact-stack {
+    right: 12px;
+    bottom: 140px;
+  }
+
+  .floating-call-panel {
+    min-width: 196px;
+    padding: 12px;
+  }
+
+  .floating-contact-btn {
+    width: 40px;
+    height: 40px;
+  }
+
   .scroll-top-btn {
-    bottom: 20px;
-    right: 16px;
+    bottom: 16px;
+    right: 12px;
     width: 40px;
     height: 40px;
   }

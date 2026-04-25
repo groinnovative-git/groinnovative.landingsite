@@ -594,13 +594,18 @@ export default function About() {
                 </div>
             </section>
 
-            {/* ─── 8. FINAL CTA — Home Style ──────────────────────────────── */}
+            {/* ─── 8. ABOUT CTA — Partner-focused ─────────────────────────── */}
             <section className="cta-banner section section-dark">
                 <div className="container">
                     <div className="section-header cta-section-head">
-                        <div className="badge"><span className="badge-dot" />CTA</div>
-                        <h2 className="reveal reveal-delay-1">Start with a Clear Plan, Not Guesswork</h2>
-                        <p className="reveal reveal-delay-2">If you already know you need a better website, stronger system, or cleaner execution path, we can help you define the right move.</p>
+                        <div className="badge"><span className="badge-dot" />WORK WITH US</div>
+                        <h2 className="reveal reveal-delay-1">
+                            You've Seen Who We Are.{' '}
+                            <span className="gradient-text">Now Let's Build Together.</span>
+                        </h2>
+                        <p className="reveal reveal-delay-2">
+                            From a dedicated team to a transparent process — Gro Innovative is ready to become your long-term digital growth partner.
+                        </p>
                     </div>
                     <div className="cta-banner-inner home-cta-panel">
                         <motion.div
@@ -610,13 +615,15 @@ export default function About() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.25 }}
                         >
-                            <span className="home-cta-eyebrow">What you get</span>
-                            <h2 style={{ color: '#fff' }}>A focused consultation that turns your idea into an actionable roadmap.</h2>
-                            <p>We help you understand what to build, what to avoid, and what the smartest next step looks like for your business right now.</p>
+                            <span className="home-cta-eyebrow">Why partner with us</span>
+                            <h2 style={{ color: '#fff' }}>A team invested in your growth, not just your project.</h2>
+                            <p>
+                                You've met our values, our process, and our team. We're not a faceless agency — we're builders, designers, and strategists who stay with you from the first call to the final launch and beyond.
+                            </p>
                             <div className="home-cta-points">
-                                <span>Free project discussion</span>
-                                <span>Clear scope guidance</span>
-                                <span>Launch and support mindset</span>
+                                <span>Dedicated team, not freelancers</span>
+                                <span>Transparent at every step</span>
+                                <span>Long-term support mindset</span>
                             </div>
                         </motion.div>
                         <motion.div
@@ -627,16 +634,16 @@ export default function About() {
                             viewport={{ once: true, amount: 0.25 }}
                         >
                             <div className="home-cta-card card">
-                                <span className="home-cta-card-kicker">Next step</span>
-                                <strong>Book a free consultation</strong>
-                                <p>Tell us your goal, current blockers, and timeline. We will help you map the right approach and recommend what actually matters first.</p>
+                                <span className="home-cta-card-kicker">Ready to start?</span>
+                                <strong>Let's turn your vision into a product that performs.</strong>
+                                <p>Tell us your goal and where you're stuck. We'll help you map the right approach and show you exactly what the smartest next step looks like.</p>
                                 <div className="home-cta-mini-list">
-                                    <span>Website or software direction</span>
-                                    <span>SEO and growth suitability</span>
-                                    <span>Launch and support clarity</span>
+                                    <span>Free initial consultation</span>
+                                    <span>NDA protected discussion</span>
+                                    <span>Honest, no-pressure scoping</span>
                                 </div>
                                 <Link to="/contact" className="btn btn-white btn-lg">
-                                    Start Your Project <span className="arr">→</span>
+                                    Start a Conversation <span className="arr">→</span>
                                 </Link>
                             </div>
                         </motion.div>

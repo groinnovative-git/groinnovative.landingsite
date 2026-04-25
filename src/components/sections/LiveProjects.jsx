@@ -47,13 +47,15 @@ const projects = [
     },
 ]
 
-export default function LiveProjects() {
+export default function LiveProjects({ variant = 'default' }) {
+    const isServicesVariant = variant === 'services'
+
     return (
-        <section className="section lp-section" aria-labelledby="lp-heading">
+        <section className={`section lp-section${isServicesVariant ? ' lp-section-services' : ''}`} aria-labelledby="lp-heading">
             <div className="container">
 
                 {/* ── Section Header ── */}
-                <div className="section-header">
+                <div className={`section-header${isServicesVariant ? ' lp-services-head' : ''}`}>
                     <motion.div
                         className="badge badge-accent"
                         initial={{ opacity: 0, y: 12 }}
@@ -72,7 +74,7 @@ export default function LiveProjects() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.35, ease: 'easeOut', delay: 0.1 }}
                     >
-                        Our Live Projects
+                        {isServicesVariant ? 'Live Projects with a Premium Browser Preview' : 'Our Live Projects'}
                     </motion.h2>
 
                     <motion.p
@@ -81,16 +83,18 @@ export default function LiveProjects() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.35, ease: 'easeOut', delay: 0.2 }}
                     >
-                        Explore some of our modern landing page templates and live client-style website demos.
+                        {isServicesVariant
+                            ? 'A few selected demos that reflect the same visual quality, structure, and polish we bring into launch-ready client work.'
+                            : 'Explore some of our modern landing page templates and live client-style website demos.'}
                     </motion.p>
                 </div>
 
                 {/* ── Cards Grid ── */}
-                <div className="grid-3">
+                <div className={`grid-3${isServicesVariant ? ' lp-grid-services' : ''}`}>
                     {projects.map((project, i) => (
                         <motion.article
                             key={project.id}
-                            className="lp-card"
+                            className={`lp-card${isServicesVariant ? ' lp-card-services' : ''}`}
                             initial={{ opacity: 0, y: 22 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

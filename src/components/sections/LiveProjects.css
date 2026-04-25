@@ -10,6 +10,37 @@
     border-bottom: 1px solid var(--border);
 }
 
+.lp-section-services {
+    background:
+        radial-gradient(circle at top center, rgba(16, 185, 129, 0.08), transparent 24%),
+        rgba(255, 255, 255, 0.012);
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.lp-services-head {
+    margin-bottom: 34px;
+}
+
+.lp-services-head h2 {
+    max-width: 620px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.lp-services-head p {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.lp-grid-services {
+    gap: 22px;
+}
+
 /* ── Project Card ── */
 .lp-card {
     display: flex;
@@ -24,6 +55,13 @@
         border-color 0.35s var(--ease);
     height: 100%;
     position: relative;
+}
+
+.lp-card-services {
+    border-radius: 26px;
+    background:
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.1), transparent 24%),
+        linear-gradient(180deg, rgba(13, 13, 13, 0.98), rgba(6, 6, 6, 0.96));
 }
 
 .lp-card:hover {

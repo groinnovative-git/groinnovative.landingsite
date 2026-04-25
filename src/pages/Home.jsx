@@ -217,9 +217,11 @@ export default function Home() {
                 <div className="container">
                     <div className="hero-grid-wrapper CenteredLayout">
                         <div className="hero-content centered">
+                            <div className="hero-eye-mark reveal reveal-delay-1" aria-hidden="true">
+                                <EyeFollowIcon />
+                            </div>
                             <h1 className="hero-headline reveal reveal-delay-1">
                                 <span className="hero-nowrap-line">
-                                    <EyeFollowIcon />
                                     Software Development & AI Solutions
                                 </span><br />
                                 for Modern Businesses
