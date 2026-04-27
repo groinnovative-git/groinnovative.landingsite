@@ -1354,16 +1354,17 @@
     }
 
     .why-line {
-        left: 12px;
+        left: 50%;
+        transform: translateX(-50%);
         margin-left: 0;
-        top: 20px;
-        bottom: 20px;
+        top: 0;
+        bottom: 0;
     }
 
     .why-card {
-        padding: 20px 20px 20px 44px;
-        align-items: flex-start;
-        text-align: left;
+        padding: 36px 20px 20px 20px;
+        align-items: center;
+        text-align: center;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--border);
         border-radius: var(--radius-lg);
@@ -1371,12 +1372,13 @@
         -webkit-backdrop-filter: blur(8px);
         width: 100%;
         margin-left: 0;
+        position: relative;
     }
 
     .why-card::before {
-        left: 5px;
-        transform: none;
-        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -8px; /* Positioned slightly above the top border to connect to the line */
         background: var(--darker);
     }
 

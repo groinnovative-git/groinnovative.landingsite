@@ -316,8 +316,17 @@ export default function FloatingChatbot({ isOpen, setIsOpen }) {
     }, [messages, isOpen, isTyping])
 
     useEffect(() => {
-        document.body.classList.toggle('chatbot-open', isOpen)
-        return () => document.body.classList.remove('chatbot-open')
+        if (isOpen) {
+            document.body.classList.add('chatbot-open')
+            document.documentElement.classList.add('chatbot-open')
+        } else {
+            document.body.classList.remove('chatbot-open')
+            document.documentElement.classList.remove('chatbot-open')
+        }
+        return () => {
+            document.body.classList.remove('chatbot-open')
+            document.documentElement.classList.remove('chatbot-open')
+        }
     }, [isOpen])
 
     const pushMessage = (role, text) => {
@@ -372,8 +381,16 @@ export default function FloatingChatbot({ isOpen, setIsOpen }) {
     }
 
     return (
-        <div className={`chatbot-widget${isOpen ? ' chatbot-widget--open' : ''}`}>
-            <div className="chatbot-window" role="dialog" aria-label="Groinnovative chatbot">
+        <>
+            {/* Backdrop overlay */}
+            <div 
+                className={`chatbot-backdrop${isOpen ? ' chatbot-backdrop--open' : ''}`}
+                onClick={() => setIsOpen(false)}
+                aria-hidden="true"
+            />
+
+            <div className={`chatbot-widget${isOpen ? ' chatbot-widget--open' : ''}`}>
+                <div className="chatbot-window" role="dialog" aria-label="Groinnovative chatbot">
 
                 {/* Header */}
                 <div className="chatbot-header">
@@ -494,5 +511,6 @@ export default function FloatingChatbot({ isOpen, setIsOpen }) {
                 </div>
             </div>
         </div>
+        </>
     )
 }
