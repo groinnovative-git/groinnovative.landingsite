@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ParticleCanvas from '../components/ParticleCanvas'
 import SEO from '../components/SEO'
@@ -157,6 +157,24 @@ const revealItem = {
 
 export default function Services() {
     const [openFaq, setOpenFaq] = useState(null)
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '')
+            // Small delay for Framer Motion animation to insert elements into DOM
+            setTimeout(() => {
+                const element = document.getElementById(id)
+                if (element) {
+                    const y = element.getBoundingClientRect().top + window.scrollY - 100 // offset for navbar
+                    window.scrollTo({ top: y, behavior: 'smooth' })
+                }
+            }, 300)
+        } else {
+            window.scrollTo(0, 0)
+        }
+    }, [location.hash])
+
     return (
         <div className="page-enter services-page">
             <SEO {...PAGE_SEO.services} />
@@ -253,9 +271,12 @@ export default function Services() {
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.04 }}
                     >
-                        {services.map((service, index) => (
+                        {services.map((service, index) => {
+                            const slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+                            return (
                             <motion.article
                                 key={service.title}
+                                id={slug}
                                 className={`service-card service-card-${index + 1}`}
                                 variants={revealItem}
                             >
@@ -306,7 +327,8 @@ export default function Services() {
                                     <ArrowRight size={16} />
                                 </Link>
                             </motion.article>
-                        ))}
+                            )
+                        })}
                     </motion.div>
                 </div>
             </section>

@@ -613,20 +613,40 @@
 }
 
 @media (max-width: 768px) {
-    .home-page .service-card {
-        min-height: 228px;
-        padding: 16px;
+    .home-page .service-card,
+    .home-page .service-card:hover {
+        min-height: 200px;
+        padding: 16px 20px;
+        transform: none !important;
     }
 
-    .home-page .service-card::after {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        height: 74%;
+    /* Completely remove the glass effect box on mobile */
+    .home-page .service-card::after,
+    .home-page .service-card:hover::after {
+        display: none !important;
     }
 
-    .home-page .service-card h3 {
-        font-size: 1.22rem;
+    /* Hide icon, paragraph, and title completely on mobile */
+    .home-page .service-card .icon-box,
+    .home-page .service-card p,
+    .home-page .service-card h3,
+    .home-page .service-card:hover .icon-box,
+    .home-page .service-card:hover p,
+    .home-page .service-card:hover h3 {
+        display: none !important;
+    }
+
+    /* Keep ONLY the link visible permanently */
+    .home-page .service-card .card-link,
+    .home-page .service-card:hover .card-link {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        display: flex !important;
+        color: #fff !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+        margin-top: auto;
+        font-size: 0.95rem;
+        padding-bottom: 4px;
     }
 }
 
@@ -1327,40 +1347,43 @@
     .why-visual {
         padding-left: 0;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         width: 100%;
         margin: 20px 0;
+        position: relative;
     }
 
     .why-line {
-        left: 50%;
-        margin-left: -1px;
+        left: 12px;
+        margin-left: 0;
         top: 20px;
         bottom: 20px;
     }
 
     .why-card {
-        padding: 24px;
-        align-items: center;
-        text-align: center;
+        padding: 20px 20px 20px 44px;
+        align-items: flex-start;
+        text-align: left;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--border);
         border-radius: var(--radius-lg);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
+        width: 100%;
+        margin-left: 0;
     }
 
     .why-card::before {
-        left: 50%;
-        transform: translateX(-50%);
-        top: -12px;
+        left: 5px;
+        transform: none;
+        top: 24px;
         background: var(--darker);
     }
 
     .why-card-stack {
         gap: 24px;
         width: 100%;
-        max-width: 450px;
+        max-width: 100%;
     }
 
     .why-cta-wrap {

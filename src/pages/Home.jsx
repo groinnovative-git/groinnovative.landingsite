@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import useReveal from '../hooks/useReveal'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion, useMotionValue, useSpring, useInView } from 'framer-motion'
 import ParticleCanvas from '../components/ParticleCanvas'
 import EyeFollowIcon from '../components/EyeFollowIcon'
@@ -186,6 +186,7 @@ const homeSectionItem = {
 
 export default function Home() {
     useReveal()
+    const navigate = useNavigate()
     const [openFaq, setOpenFaq] = useState(0)
     const [isPaused, setIsPaused] = useState(false)
     const prefersReducedMotion = useReducedMotion()
@@ -315,19 +316,24 @@ export default function Home() {
                         initial="hidden"
                         animate={servicesInView ? 'visible' : 'hidden'}
                     >
-                        {services.map((s, index) => (
+                        {services.map((s, index) => {
+                            const slug = s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+                            return (
                             <motion.div
                                 key={s.title}
                                 variants={serviceCardAnim}
                                 custom={servicesSplitOffsets[index]}
                                 className="card service-card"
+                                onClick={() => navigate('/services#' + slug)}
+                                style={{ cursor: 'pointer' }}
                             >
                                 <div className="icon-box" style={{ background: s.color, color: 'var(--primary)' }}>{s.icon}</div>
                                 <h3>{s.title}</h3>
                                 <p>{s.desc}</p>
-                                <Link to="/services" className="card-link">Explore Service <span className="arr">→</span></Link>
+                                <span className="card-link">Explore Service <span className="arr">→</span></span>
                             </motion.div>
-                        ))}
+                            )
+                        })}
                         </motion.div>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: 48, position: 'relative', zIndex: 1 }}>
