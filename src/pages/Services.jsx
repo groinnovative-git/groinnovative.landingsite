@@ -6,7 +6,7 @@ import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
 import { PAGE_SEO } from '../seo/seoConfig'
 import { breadcrumbSchema, serviceSchemas, servicesFaqSchema, servicesFaqData } from '../seo/schemas'
-import { ArrowRight, Lock, Search, ShieldCheck, Sparkles, Wrench, Zap } from 'lucide-react'
+import { ArrowRight, Lock, Search, ShieldCheck, Sparkles, Wrench, Zap, Plus, Minus } from 'lucide-react'
 import LiveProjects from '../components/sections/LiveProjects'
 import './Services.css'
 
@@ -359,7 +359,9 @@ export default function Services() {
                                         aria-expanded={isOpen}
                                     >
                                         <span>{item.q}</span>
-                                        <span className="services-faq-plus">{isOpen ? '-' : '+'}</span>
+                                        <span className="services-faq-plus">
+                                            {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                                        </span>
                                     </button>
                                     <div className="services-faq-answer-wrap">
                                         <div className="services-faq-answer">
@@ -375,6 +377,9 @@ export default function Services() {
 
             <section className="section services-consultation-section">
                 <div className="container">
+                    <div className="section-header cta-section-head" style={{ marginBottom: '24px' }}>
+                        <div className="badge"><span className="badge-dot" />WORK WITH US</div>
+                    </div>
                     <div className="services-consultation-panel">
                         <motion.div
                             className="services-consultation-copy"

@@ -182,19 +182,8 @@
         0 22px 36px rgba(0, 0, 0, 0.22);
 }
 
-.services-page .service-card-1,
-.services-page .service-card-4 {
-    grid-column: span 4;
-}
-
-.services-page .service-card-2,
-.services-page .service-card-5 {
-    grid-column: span 4;
-}
-
-.services-page .service-card-3,
-.services-page .service-card-6 {
-    grid-column: span 4;
+.services-page .service-card {
+    grid-column: span 6;
 }
 
 .services-page .service-card-top,
@@ -422,7 +411,7 @@
 }
 
 .services-consultation-section {
-    padding-top: 36px;
+    padding: 100px 0;
 }
 
 .services-consultation-panel {

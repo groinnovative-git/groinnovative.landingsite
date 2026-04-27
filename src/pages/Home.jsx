@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion, useMotionValue, useSpring, useInView } from 'framer-motion'
+import { Plus, Minus } from 'lucide-react'
 import ParticleCanvas from '../components/ParticleCanvas'
 import EyeFollowIcon from '../components/EyeFollowIcon'
 import SEO from '../components/SEO'
@@ -480,7 +481,9 @@ export default function Home() {
                                         aria-expanded={isOpen}
                                     >
                                         <span>{item.q}</span>
-                                        <span className="home-faq-plus">{isOpen ? '-' : '+'}</span>
+                                        <span className="home-faq-plus">
+                                            {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                                        </span>
                                     </button>
                                     <div className="home-faq-answer-wrap">
                                         <div className="home-faq-answer">

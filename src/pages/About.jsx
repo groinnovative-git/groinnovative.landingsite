@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
     Search, PenTool, Code, Bug, Rocket, LifeBuoy,
-    Eye, Target, Zap, Star, Users, Shield, TrendingUp, RefreshCw
+    Eye, Target, Zap, Star, Users, Shield, TrendingUp, RefreshCw, Plus, Minus
 } from 'lucide-react'
 import ParticleCanvas from '../components/ParticleCanvas'
 import SEO from '../components/SEO'
@@ -600,7 +600,7 @@ export default function About() {
             </section>
 
             {/* ─── GEO FAQ SECTION ────────────────────────────────────────────── */}
-            <section className="about-faq-section section" style={{ background: 'var(--card)' }}>
+            <section className="about-faq-section section">
                 <div className="container">
                     <div className="section-header services-section-head">
                         <div className="badge"><span className="badge-dot" />COMPANY FAQ</div>
@@ -624,7 +624,9 @@ export default function About() {
                                         aria-expanded={isOpen}
                                     >
                                         <span>{item.q}</span>
-                                        <span className="about-faq-plus">{isOpen ? '-' : '+'}</span>
+                                        <span className="about-faq-plus">
+                                            {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                                        </span>
                                     </button>
                                     <div className="about-faq-answer-wrap">
                                         <div className="about-faq-answer">
