@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import { Link, useNavigate } from 'react-router-dom'
-<<<<<<< HEAD
-import { motion, useReducedMotion, useMotionValue, useSpring, useInView } from 'framer-motion'
-import { Plus, Minus } from 'lucide-react'
-=======
 import { motion, useReducedMotion, useMotionValue, useSpring, useInView, useAnimationFrame } from 'framer-motion'
->>>>>>> d8d2977bcc77760d9a57006c513ae0bf77f4fc9c
+import { Plus, Minus } from 'lucide-react'
 import ParticleCanvas from '../components/ParticleCanvas'
 import EyeFollowIcon from '../components/EyeFollowIcon'
 import SEO from '../components/SEO'
