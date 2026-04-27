@@ -643,21 +643,21 @@ export default function About() {
                 <div className="container">
                     <div className="section-header cta-section-head">
                         <div className="badge"><span className="badge-dot" />WORK WITH US</div>
-                        <h2 className="reveal reveal-delay-1">
-                            You've Seen Who We Are.{' '}
-                            <span className="gradient-text">Now Let's Build Together.</span>
+                        <h2>
+                            You&apos;ve Seen Who We Are.{' '}
+                            <span className="gradient-text">Now Let&apos;s Build Together.</span>
                         </h2>
-                        <p className="reveal reveal-delay-2">
-                            From a dedicated team to a transparent process — Gro Innovative is ready to become your long-term digital growth partner.
+                        <p>
+                            From a dedicated team to a transparent process — Groinnovative is ready to become your long-term digital growth partner.
                         </p>
                     </div>
                     <div className="cta-banner-inner home-cta-panel">
                         <motion.div
                             className="home-cta-copy"
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.25 }}
+                            initial={{ opacity: 0, y: 18 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.45, ease: 'easeOut' }}
                         >
                             <span className="home-cta-eyebrow">Why partner with us</span>
                             <h2 style={{ color: '#fff' }}>A team invested in your growth, not just your project.</h2>
@@ -672,10 +672,10 @@ export default function About() {
                         </motion.div>
                         <motion.div
                             className="home-cta-side"
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.25 }}
+                            initial={{ opacity: 0, y: 18 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
                         >
                             <div className="home-cta-card card">
                                 <span className="home-cta-card-kicker">Ready to start?</span>

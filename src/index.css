@@ -315,6 +315,25 @@ p {
   z-index: 2;
 }
 
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+}
+
+.cta-banner.section {
+  padding-top: 20px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .cta-banner.section {
+    padding-top: 10px;
+    padding-bottom: 40px;
+  }
+}
+
+
 .section-sm {
   padding: 64px 0;
   position: relative;
@@ -1026,7 +1045,179 @@ p {
 }
 
 body.menu-open { overflow: hidden !important; }
-
-
 html.menu-open { overflow: hidden !important; }
+
+/* ── Global CTA Banner (Shared across Home, About, Services) ── */
+.cta-section-head {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .cta-section-head {
+        margin-bottom: 12px;
+    }
+}
+
+.cta-section-head .badge {
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.cta-section-head h2 {
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.cta-section-head p {
+    max-width: 680px;
+    margin: 0 auto 12px;
+    font-size: 0.95rem;
+}
+
+.cta-banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 40px 60px;
+}
+
+@media (max-width: 768px) {
+    .cta-banner-inner {
+        padding: 32px 20px;
+    }
+}
+
+
+.home-cta-copy {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-cta-eyebrow {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.home-cta-copy h2 {
+    margin-bottom: 14px;
+    max-width: 14ch;
+    color: #fff;
+}
+
+.home-cta-copy p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.8;
+}
+
+.home-cta-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.home-cta-points span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.94rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.home-cta-points span::before {
+    content: "✓";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.home-cta-side {
+    flex: 0 0 380px;
+}
+
+.home-cta-card {
+    padding: 32px;
+    border-radius: 20px;
+    border: 1px solid var(--border-strong);
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
+    height: 100%;
+}
+
+.home-cta-card-kicker {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.home-cta-card strong {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.home-cta-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.home-cta-mini-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.home-cta-mini-list span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: #eee;
+}
+
+.home-cta-mini-list span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+@media (max-width: 900px) {
+    .cta-banner-inner {
+        flex-direction: column;
+        padding: 40px 24px;
+        gap: 24px;
+    }
+    .home-cta-side {
+        flex: none;
+        width: 100%;
+    }
+}
+
 

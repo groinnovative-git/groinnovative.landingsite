@@ -421,90 +421,7 @@
     line-height: 1.7;
 }
 
-.services-consultation-section {
-    padding-top: 36px;
-}
-
-.services-consultation-panel {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-    gap: 28px;
-    padding: 36px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background:
-        radial-gradient(circle at top left, rgba(16, 185, 129, 0.12), transparent 24%),
-        radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.08), transparent 22%),
-        rgba(6, 6, 6, 0.98);
-}
-
-.services-consultation-copy {
-    max-width: 620px;
-}
-
-.services-consultation-kicker {
-    display: inline-block;
-    margin-bottom: 14px;
-    color: var(--primary);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.services-consultation-copy h2 {
-    margin-bottom: 14px;
-    max-width: 14ch;
-    color: #fff;
-}
-
-.services-consultation-copy p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.72);
-    line-height: 1.8;
-}
-
-.services-consultation-card {
-    padding: 26px;
-    border-radius: 24px;
-    border: 1px solid rgba(16, 185, 129, 0.16);
-    background:
-        linear-gradient(180deg, rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0.015)),
-        rgba(10, 10, 10, 0.96);
-}
-
-.services-consultation-card strong {
-    display: block;
-    margin-bottom: 14px;
-    font-size: 1.22rem;
-    color: var(--text);
-}
-
-.services-consultation-list {
-    display: grid;
-    gap: 12px;
-    margin: 0 0 22px;
-    padding: 0;
-    list-style: none;
-}
-
-.services-consultation-list li {
-    position: relative;
-    padding-left: 18px;
-    color: rgba(255, 255, 255, 0.76);
-}
-
-.services-consultation-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--primary);
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.45);
-}
+/* Consultation section uses global CTA styles from index.css */
 
 @media (max-width: 1100px) {
     .services-why-grid,
@@ -614,9 +531,7 @@
         align-items: flex-start;
     }
 
-    .services-consultation-card {
-        padding: 20px;
-    }
+
 }
 
 /* ── Services FAQ ── */

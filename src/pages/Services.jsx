@@ -373,37 +373,52 @@ export default function Services() {
                 </div>
             </section>
 
-            <section className="section services-consultation-section">
+            {/* ── CTA BANNER ── */}
+            <section className="cta-banner section section-dark">
                 <div className="container">
-                    <div className="services-consultation-panel">
+                    <div className="section-header cta-section-head">
+                        <div className="badge"><span className="badge-dot" />CTA</div>
+                        <h2>Start with a Clear Plan, Not Guesswork</h2>
+                        <p>If you already know you need a better website, stronger system, or cleaner execution path, we can help you define the right move.</p>
+                    </div>
+                    <div className="cta-banner-inner home-cta-panel">
                         <motion.div
-                            className="services-consultation-copy"
+                            className="home-cta-copy"
                             initial={{ opacity: 0, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.45, ease: 'easeOut' }}
                         >
-                            <span className="services-consultation-kicker">Consultation / Get a Quote</span>
-                            <h2>Have an idea? Let&apos;s turn it into a digital product.</h2>
+                            <span className="home-cta-eyebrow">Consultation / Get a Quote</span>
+                            <h2 style={{ color: '#fff' }}>Have an idea? Let&apos;s turn it into a digital product.</h2>
                             <p>We help shape the right website, software, SEO, growth, and support direction before execution begins.</p>
+                            <div className="home-cta-points">
+                                <span>Free project discussion</span>
+                                <span>Clear scope guidance</span>
+                                <span>Launch and support mindset</span>
+                            </div>
                         </motion.div>
 
                         <motion.div
-                            className="services-consultation-card"
+                            className="home-cta-side"
                             initial={{ opacity: 0, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
                         >
-                            <strong>Consultation focus</strong>
-                            <ul className="services-consultation-list">
-                                <li>Website or software direction</li>
-                                <li>SEO and growth planning</li>
-                                <li>Launch and support clarity</li>
-                            </ul>
-                            <Link to="/contact" className="btn btn-white btn-lg">
-                                Start Your Project <span className="arr">→</span>
-                            </Link>
+                            <div className="home-cta-card card">
+                                <span className="home-cta-card-kicker">Next step</span>
+                                <strong>Book a free consultation</strong>
+                                <p>Tell us your goal, current blockers, and timeline. We will help you map the right approach and recommend what actually matters first.</p>
+                                <div className="home-cta-mini-list">
+                                    <span>Website or software direction</span>
+                                    <span>SEO and growth planning</span>
+                                    <span>Launch and support clarity</span>
+                                </div>
+                                <Link to="/contact" className="btn btn-white btn-lg">
+                                    Start Your Project <span className="arr">→</span>
+                                </Link>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
