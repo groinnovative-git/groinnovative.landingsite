@@ -30,11 +30,16 @@ export default function Navbar() {
     // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (open) {
-            document.body.classList.add('menu-open'); document.documentElement.classList.add('menu-open');
+            document.body.classList.add('menu-open')
+            document.documentElement.classList.add('menu-open')
         } else {
-            document.body.classList.remove('menu-open'); document.documentElement.classList.remove('menu-open');
+            document.body.classList.remove('menu-open')
+            document.documentElement.classList.remove('menu-open')
         }
-        return () => document.body.classList.remove('menu-open'); document.documentElement.classList.remove('menu-open');
+        return () => {
+            document.body.classList.remove('menu-open')
+            document.documentElement.classList.remove('menu-open')
+        }
     }, [open])
 
     // Build class string

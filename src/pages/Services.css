@@ -577,6 +577,23 @@
     }
 }
 
+@media (max-width: 768px) {
+    /* Safety fallback: ensure Framer Motion whileInView elements are always
+       visible on mobile, even if IntersectionObserver doesn't fire correctly */
+    .services-bento,
+    .services-bento .service-card,
+    .services-faq-list,
+    .services-faq-list .services-faq-item,
+    .services-why-grid,
+    .services-why-grid .services-why-card,
+    .services-process-line,
+    .services-process-line .services-process-card {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+}
+
 @media (max-width: 480px) {
     .services-page .container {
         padding-left: 18px;

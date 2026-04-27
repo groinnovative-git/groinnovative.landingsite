@@ -251,7 +251,7 @@ export default function Services() {
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.14 }}
+                        viewport={{ once: true, amount: 0.04 }}
                     >
                         {services.map((service, index) => (
                             <motion.article

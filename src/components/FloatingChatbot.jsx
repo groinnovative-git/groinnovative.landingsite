@@ -302,9 +302,8 @@ function getBotReply(rawMessage) {
    COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
 
-export default function FloatingChatbot() {
+export default function FloatingChatbot({ isOpen, setIsOpen }) {
     const navigate = useNavigate()
-    const [isOpen, setIsOpen] = useState(false)
     const [messages, setMessages] = useState(INITIAL_MESSAGES)
     const [inputValue, setInputValue] = useState('')
     const [isTyping, setIsTyping] = useState(false)
@@ -494,17 +493,6 @@ export default function FloatingChatbot() {
                     </a>
                 </div>
             </div>
-
-            {/* Trigger Button */}
-            <button
-                type="button"
-                className="chatbot-trigger"
-                onClick={() => setIsOpen((prev) => !prev)}
-                aria-label={isOpen ? 'Close chatbot' : 'Open chatbot'}
-                aria-expanded={isOpen}
-            >
-                {isOpen ? <X size={16} /> : <Bot size={18} />}
-            </button>
         </div>
     )
 }

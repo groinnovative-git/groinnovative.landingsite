@@ -49,6 +49,15 @@
 @media (max-width: 1024px) {
   :root {
     --nav-h: 68px;
+    /* Safe area on right so floating buttons don't overlap content */
+    --floating-safe-right: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    /* buttons are 40px wide + 14px margin + 10px gap = 64px */
+    --floating-safe-right: 68px;
   }
 }
 
@@ -85,7 +94,9 @@ body.menu-open {
 }
 
 main {
-  overflow-x: hidden;
+  /* Use clip instead of hidden — avoids creating a scroll container that
+     traps fixed-position children (chatbot window, mobile menu) on mobile */
+  overflow-x: clip;
   min-height: 100vh;
 }
 
@@ -637,15 +648,10 @@ p {
 @media (max-width: 768px) {
   .section {
     padding: 64px 0;
-    content-visibility: auto;
-    /* Skip rendering offscreen sections */
-    contain-intrinsic-size: 500px;
   }
 
   .section-sm {
     padding: 48px 0;
-    content-visibility: auto;
-    contain-intrinsic-size: 300px;
   }
 }
 
@@ -746,12 +752,51 @@ p {
 .floating-contact-stack {
   position: fixed;
   right: 24px;
-  bottom: 160px;
+  bottom: 90px;
   z-index: 910;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+}
+
+.fab-menu-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+  pointer-events: none;
+}
+
+.fab-menu-items.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fab-main-btn {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  align-self: flex-end;
+}
+
+.fab-main-btn:hover,
+.fab-main-btn.active {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4);
+}
+
+.floating-chatbot-btn {
+  background: var(--primary);
+}
+
+.floating-chatbot-btn:hover,
+.floating-chatbot-btn.active {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3);
 }
 
 .floating-call-wrap {
@@ -762,10 +807,12 @@ p {
 }
 
 .floating-call-panel {
+  position: absolute;
+  bottom: 56px;
+  right: 0;
   display: grid;
   gap: 10px;
   min-width: 220px;
-  margin-bottom: 12px;
   padding: 14px;
   border-radius: 18px;
   border: 1px solid var(--border-strong);
@@ -833,11 +880,11 @@ p {
 }
 
 .floating-whatsapp-btn {
-  background: #25D366;
+  background: var(--primary);
 }
 
 .floating-whatsapp-btn:hover {
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3);
 }
 
 .floating-call-btn {
@@ -852,7 +899,7 @@ p {
 @media (max-width: 600px) {
   .floating-contact-stack {
     right: 14px;
-    bottom: 136px;
+    bottom: 72px;
   }
 
   .floating-call-panel {
@@ -861,15 +908,15 @@ p {
   }
 
   .floating-contact-btn {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .scroll-top-btn {
     bottom: 16px;
     right: 14px;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 }
 

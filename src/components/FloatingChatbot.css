@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   color: #03120e;
-  background: linear-gradient(135deg, #34d399, #10b981);
+  background: var(--primary);
   box-shadow: 0 8px 32px rgba(16, 185, 129, 0.38);
   border: none;
   cursor: pointer;
@@ -350,7 +350,7 @@
   align-items: center;
   justify-content: center;
   color: #03120e;
-  background: linear-gradient(135deg, #34d399, #10b981);
+  background: var(--primary);
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(16, 185, 129, 0.28);
@@ -424,7 +424,7 @@
   }
 
   .chatbot-trigger {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 }
