@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import { Link, useNavigate } from 'react-router-dom'
+<<<<<<< HEAD
 import { motion, useReducedMotion, useMotionValue, useSpring, useInView } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
+=======
+import { motion, useReducedMotion, useMotionValue, useSpring, useInView, useAnimationFrame } from 'framer-motion'
+>>>>>>> d8d2977bcc77760d9a57006c513ae0bf77f4fc9c
 import ParticleCanvas from '../components/ParticleCanvas'
 import EyeFollowIcon from '../components/EyeFollowIcon'
 import SEO from '../components/SEO'
@@ -189,10 +193,40 @@ export default function Home() {
     useReveal()
     const navigate = useNavigate()
     const [openFaq, setOpenFaq] = useState(0)
-    const [isPaused, setIsPaused] = useState(false)
     const prefersReducedMotion = useReducedMotion()
     const servicesRef = useRef(null)
     const servicesInView = useInView(servicesRef, { once: true, amount: 0.28 })
+    
+    // Testimonial Scroll Refs
+    const trackRef = useRef(null)
+    const isPausedRef = useRef(false)
+    const isDraggingRef = useRef(false)
+    const x = useMotionValue(0)
+
+    useAnimationFrame((t, delta) => {
+        if (prefersReducedMotion) return
+        
+        let currentX = x.get()
+        
+        // Auto-scroll logic
+        if (!isPausedRef.current && !isDraggingRef.current) {
+            // Clamp delta to prevent huge jumps if tab was inactive
+            const dt = Math.min(delta, 50)
+            currentX -= 0.05 * dt
+        }
+
+        // Boundary wrap logic (infinite loop)
+        if (trackRef.current) {
+            const halfWidth = trackRef.current.scrollWidth / 2
+            if (currentX <= -halfWidth) {
+                currentX += halfWidth
+            } else if (currentX > 0) {
+                currentX -= halfWidth
+            }
+        }
+        x.set(currentX)
+    })
+
     const mouseX = useMotionValue(0)
     const mouseY = useMotionValue(0)
     const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 })
@@ -355,7 +389,7 @@ export default function Home() {
                     <motion.div variants={fadeInUpBadge} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="badge why-section-badge"><span className="badge-dot" />WHY GROINNOVATIVE</motion.div>
                     <div className="why-inner">
                         <div className="why-text">
-                            <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>Why Choose Groinnovative for Website and Software Development?</motion.h2>
+                            <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 20 }}>Why Choose Groinnovative for Website and Software Development?</motion.h2>
                             <motion.p variants={fadeInUpP} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 32 }}>
                                 Groinnovative is a software development and web design company that builds scalable digital systems for businesses worldwide. From custom web applications and responsive business websites to SEO optimization and digital marketing, we combine clean execution with long-term growth support.
                             </motion.p>
@@ -406,18 +440,32 @@ export default function Home() {
                     </div>
                 </div>
                 <motion.div
-                    className={`testimonials-marquee ${isPaused ? 'is-paused' : ''}`}
+                    className="testimonials-marquee"
                     variants={homeSectionItem}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                    onClick={() => setIsPaused(!isPaused)}
-                    onTouchStart={() => setIsPaused(!isPaused)}
                 >
-                    <div className="testimonial-row testimonial-row-left">
-                        <div className="testimonial-track">
+                    <div 
+                        className="testimonial-row testimonial-row-left"
+                        style={{ overflow: 'hidden' }}
+                    >
+                        <motion.div 
+                            className="testimonial-track" 
+                            ref={trackRef}
+                            style={{ width: 'max-content', display: 'flex', x }}
+                            drag="x"
+                            dragConstraints={{ left: -999999, right: 999999 }}
+                            dragElastic={0}
+                            dragMomentum={false}
+                            onDragStart={() => { isDraggingRef.current = true }}
+                            onDragEnd={() => { isDraggingRef.current = false }}
+                            onMouseEnter={() => { isPausedRef.current = true }}
+                            onMouseLeave={() => { isPausedRef.current = false }}
+                            onTouchStart={() => { isPausedRef.current = true }}
+                            onTouchEnd={() => { isPausedRef.current = false }}
+                            onTouchCancel={() => { isPausedRef.current = false }}
+                        >
                             {[0, 1].map((groupIndex) => (
                                 <div
                                     className="testimonial-track-group"
@@ -438,7 +486,7 @@ export default function Home() {
                                     ))}
                                 </div>
                             ))}
-                        </div>
+                        </motion.div>
                     </div>
                 </motion.div>
             </section>
@@ -508,10 +556,10 @@ export default function Home() {
                     <div className="cta-banner-inner home-cta-panel">
                         <motion.div
                             className="home-cta-copy"
-                            variants={homeSectionItem}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.25 }}
+                            initial={{ opacity: 0, y: 18 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.45, ease: 'easeOut' }}
                         >
                             <span className="home-cta-eyebrow">What you get</span>
                             <h2 style={{ color: '#fff' }}>A focused consultation that turns your idea into an actionable roadmap.</h2>
@@ -524,10 +572,10 @@ export default function Home() {
                         </motion.div>
                         <motion.div
                             className="home-cta-side"
-                            variants={homeSectionItem}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.25 }}
+                            initial={{ opacity: 0, y: 18 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
                         >
                             <div className="home-cta-card card">
                                 <span className="home-cta-card-kicker">Next step</span>

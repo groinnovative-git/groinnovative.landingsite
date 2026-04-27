@@ -6,7 +6,7 @@
     padding-right: 28px;
 }
 
-/* ── Hero ── */
+/* â”€â”€ Hero â”€â”€ */
 .hero-section {
     padding: calc(var(--nav-h) + 80px) 0 100px;
     position: relative;
@@ -14,7 +14,7 @@
     background: transparent;
 }
 
-/* ——— Hero Layout Refactored ——— */
+/* â€”â€”â€” Hero Layout Refactored â€”â€”â€” */
 .hero-grid-wrapper.CenteredLayout {
     display: flex;
     flex-direction: column;
@@ -130,7 +130,7 @@
     box-shadow: var(--shadow-sm);
 }
 
-/* ── Trusted by ── */
+/* â”€â”€ Trusted by â”€â”€ */
 .trusted-section {
     padding: 40px 0;
     background: var(--card);
@@ -188,7 +188,7 @@
     font-weight: 500;
 }
 
-/* ── Service card ── */
+/* â”€â”€ Service card â”€â”€ */
 .services-section {
     position: relative;
     overflow: hidden;
@@ -650,7 +650,7 @@
     }
 }
 
-/* ── Why Us ── */
+/* â”€â”€ Why Us â”€â”€ */
 .why-section-badge {
     display: flex;
     width: fit-content;
@@ -809,7 +809,7 @@
     }
 }
 
-/* ── Testimonials Section ── */
+/* â”€â”€ Testimonials Section â”€â”€ */
 .testimonials-section {
     position: relative;
     overflow: hidden;
@@ -868,7 +868,7 @@
 }
 
 .testimonial-row-left .testimonial-track {
-    animation: testimonialScrollLeft 36s linear infinite;
+    /* Animation removed in favor of JS scrollLoop */
 }
 
 .testimonial-track-group {
@@ -876,10 +876,6 @@
     gap: 20px;
     flex-shrink: 0;
     padding-right: 20px;
-}
-
-.testimonial-row:hover .testimonial-track {
-    animation-play-state: paused;
 }
 
 .testimonial-scroll-card {
@@ -923,7 +919,7 @@
     }
 }
 
-/* ── FAQ Section ── */
+/* â”€â”€ FAQ Section â”€â”€ */
 .home-faq-section {
     position: relative;
 }
@@ -1039,7 +1035,7 @@
     line-height: 1.75;
 }
 
-/* ── CTA Banner ── */
+/* â”€â”€ CTA Banner â”€â”€ */
 .home-cta-panel {
     position: relative;
     overflow: hidden;
@@ -1143,22 +1139,11 @@
     box-shadow: 0 0 10px rgba(16, 185, 129, 0.45);
 }
 
-.cta-banner-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
-    padding: 60px;
-}
-
 .cta-banner p {
     font-size: 1.05rem;
 }
 
-/* ——— Hero Section ——— */
+/* â€”â€”â€” Hero Section â€”â€”â€” */
 .hero-section {
     position: relative;
     padding: 96px 0 72px 0;
@@ -1196,7 +1181,7 @@
     white-space: nowrap;
 }
 
-/* ── STATS ── */
+/* â”€â”€ STATS â”€â”€ */
 .stats-section {
     padding: 60px 0;
     position: relative;
@@ -1394,12 +1379,6 @@
         margin-top: 10px;
     }
 
-    .cta-banner-inner {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 28px;
-    }
-
     .stats-grid {
         grid-template-columns: 1fr 1fr;
     }
@@ -1525,7 +1504,7 @@
     }
 }
 
-/* ── Mouse Glow & Micro-interactions ── */
+/* â”€â”€ Mouse Glow & Micro-interactions â”€â”€ */
 .why-section {
     overflow: hidden;
     /* Contain glow overlay */
@@ -1610,3 +1589,4 @@
         box-shadow: none;
     }
 }
+.testimonial-row::-webkit-scrollbar { display: none; }

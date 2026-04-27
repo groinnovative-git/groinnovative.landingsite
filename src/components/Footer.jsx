@@ -15,11 +15,11 @@ const company = [
     { label: 'Services', to: '/services' },
     { label: 'Contact', to: '/contact' },
 ]
+import { Linkedin, Instagram } from 'lucide-react'
+
 const social = [
-    { icon: '𝕏', label: 'Twitter / X', href: 'https://x.com/groinnovative' },
-    { icon: 'in', label: 'LinkedIn', href: 'https://www.linkedin.com/company/groinnovative' },
-    { icon: '📷', label: 'Instagram', href: 'https://www.instagram.com/groinnovative' },
-    { icon: '⌨', label: 'GitHub', href: 'https://github.com/groinnovative' },
+    { icon: <Linkedin size={18} />, label: 'LinkedIn', href: 'https://www.linkedin.com/company/groinnovative' },
+    { icon: <Instagram size={18} />, label: 'Instagram', href: 'https://www.instagram.com/groinnovative' },
 ]
 
 export default function Footer() {

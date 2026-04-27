@@ -274,59 +274,59 @@ export default function Services() {
                         {services.map((service, index) => {
                             const slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
                             return (
-                            <motion.article
-                                key={service.title}
-                                id={slug}
-                                className={`service-card service-card-${index + 1}`}
-                                variants={revealItem}
-                            >
-                                <div className="service-card-top">
-                                    <span className="service-card-label">{service.category}</span>
-                                    <div className="service-card-icon icon-box">{service.icon}</div>
-                                </div>
-
-                                <div className="service-card-copy">
-                                    <span className="service-card-accent">{service.accent}</span>
-                                    <h3>{service.title}</h3>
-                                    <p style={{ marginBottom: '16px' }}>{service.desc}</p>
-                                </div>
-
-                                <div style={{ display: 'grid', gap: '16px', marginBottom: '16px' }}>
-                                    <div>
-                                        <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>What is included:</strong>
-                                        <ul className="service-card-list">
-                                            {service.features.map((feature) => (
-                                                <li key={feature}>
-                                                    <span className="service-card-check">✓</span>
-                                                    <span>{feature}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                <motion.article
+                                    key={service.title}
+                                    id={slug}
+                                    className={`service-card service-card-${index + 1}`}
+                                    variants={revealItem}
+                                >
+                                    <div className="service-card-top">
+                                        <span className="service-card-label">{service.category}</span>
+                                        <div className="service-card-icon icon-box">{service.icon}</div>
                                     </div>
-                                    
-                                    <div>
-                                        <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Who it is for:</strong>
-                                        <ul className="service-card-list" style={{ gap: '6px' }}>
-                                            {service.whoFor.map((item) => (
-                                                <li key={item} style={{ fontSize: '0.85rem' }}>
-                                                    <span className="service-card-check" style={{ fontSize: '1rem' }}>•</span>
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+
+                                    <div className="service-card-copy">
+                                        <span className="service-card-accent">{service.accent}</span>
+                                        <h3>{service.title}</h3>
+                                        <p style={{ marginBottom: '16px' }}>{service.desc}</p>
                                     </div>
-                                </div>
 
-                                <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: '24px' }}>
-                                    <p style={{ marginBottom: '8px' }}><strong>Use Cases:</strong> {service.useCases}</p>
-                                    <p><strong>Related:</strong> {service.related.join(', ')}</p>
-                                </div>
+                                    <div style={{ display: 'grid', gap: '16px', marginBottom: '16px' }}>
+                                        <div>
+                                            <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>What is included:</strong>
+                                            <ul className="service-card-list">
+                                                {service.features.map((feature) => (
+                                                    <li key={feature}>
+                                                        <span className="service-card-check">✓</span>
+                                                        <span>{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
 
-                                <Link to="/contact" className="service-card-cta">
-                                    {service.buttonText}
-                                    <ArrowRight size={16} />
-                                </Link>
-                            </motion.article>
+                                        <div>
+                                            <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Who it is for:</strong>
+                                            <ul className="service-card-list" style={{ gap: '6px' }}>
+                                                {service.whoFor.map((item) => (
+                                                    <li key={item} style={{ fontSize: '0.85rem' }}>
+                                                        <span className="service-card-check" style={{ fontSize: '1rem' }}>•</span>
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: '24px' }}>
+                                        <p style={{ marginBottom: '8px' }}><strong>Use Cases:</strong> {service.useCases}</p>
+                                        <p><strong>Related:</strong> {service.related.join(', ')}</p>
+                                    </div>
+
+                                    <Link to="/contact" className="service-card-cta">
+                                        {service.buttonText}
+                                        <ArrowRight size={16} />
+                                    </Link>
+                                </motion.article>
                             )
                         })}
                     </motion.div>
@@ -375,40 +375,50 @@ export default function Services() {
                 </div>
             </section>
 
-            <section className="section services-consultation-section">
+            {/* ── CTA BANNER ── */}
+            <section className="cta-banner section section-dark">
                 <div className="container">
                     <div className="section-header cta-section-head" style={{ marginBottom: '24px' }}>
                         <div className="badge"><span className="badge-dot" />WORK WITH US</div>
                     </div>
                     <div className="services-consultation-panel">
                         <motion.div
-                            className="services-consultation-copy"
+                            className="home-cta-copy"
                             initial={{ opacity: 0, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.45, ease: 'easeOut' }}
                         >
-                            <span className="services-consultation-kicker">Consultation / Get a Quote</span>
-                            <h2>Have an idea? Let&apos;s turn it into a digital product.</h2>
+                            <span className="home-cta-eyebrow">Consultation / Get a Quote</span>
+                            <h2 style={{ color: '#fff' }}>Have an idea? Let&apos;s turn it into a digital product.</h2>
                             <p>We help shape the right website, software, SEO, growth, and support direction before execution begins.</p>
+                            <div className="home-cta-points">
+                                <span>Free project discussion</span>
+                                <span>Clear scope guidance</span>
+                                <span>Launch and support mindset</span>
+                            </div>
                         </motion.div>
 
                         <motion.div
-                            className="services-consultation-card"
+                            className="home-cta-side"
                             initial={{ opacity: 0, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
                         >
-                            <strong>Consultation focus</strong>
-                            <ul className="services-consultation-list">
-                                <li>Website or software direction</li>
-                                <li>SEO and growth planning</li>
-                                <li>Launch and support clarity</li>
-                            </ul>
-                            <Link to="/contact" className="btn btn-white btn-lg">
-                                Start Your Project <span className="arr">→</span>
-                            </Link>
+                            <div className="home-cta-card card">
+                                <span className="home-cta-card-kicker">Next step</span>
+                                <strong>Book a free consultation</strong>
+                                <p>Tell us your goal, current blockers, and timeline. We will help you map the right approach and recommend what actually matters first.</p>
+                                <div className="home-cta-mini-list">
+                                    <span>Website or software direction</span>
+                                    <span>SEO and growth planning</span>
+                                    <span>Launch and support clarity</span>
+                                </div>
+                                <Link to="/contact" className="btn btn-white btn-lg">
+                                    Start Your Project <span className="arr">→</span>
+                                </Link>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
