@@ -283,7 +283,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="scroll-indicator" aria-hidden="true">
-                    <span className="scroll-indicator-label">Scroll Down</span>
+                    {/* <span className="scroll-indicator-label">Scroll Down</span> */}
                     <div className="scroll-indicator-mouse">
                         <div className="scroll-indicator-wheel" />
                     </div>
