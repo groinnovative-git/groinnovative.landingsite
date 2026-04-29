@@ -1462,6 +1462,10 @@
         padding: 90px 0 60px 0;
     }
 
+    .home-page .hero-section > .scroll-indicator {
+        display: none;
+    }
+
     .services-stack-intro {
         display: none;
     }
