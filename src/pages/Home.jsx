@@ -192,7 +192,7 @@ export default function Home() {
     const prefersReducedMotion = useReducedMotion()
     const servicesRef = useRef(null)
     const servicesInView = useInView(servicesRef, { once: true, amount: 0.28 })
-    
+
     // Testimonial Scroll Refs
     const trackRef = useRef(null)
     const isPausedRef = useRef(false)
@@ -201,9 +201,9 @@ export default function Home() {
 
     useAnimationFrame((t, delta) => {
         if (prefersReducedMotion) return
-        
+
         let currentX = x.get()
-        
+
         // Auto-scroll logic
         if (!isPausedRef.current && !isDraggingRef.current) {
             // Clamp delta to prevent huge jumps if tab was inactive
@@ -283,7 +283,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="scroll-indicator" aria-hidden="true">
-                    {/* <span className="scroll-indicator-label">Scroll Down</span> */}
+                    <span className="scroll-indicator-label">Scroll Down</span>
                     <div className="scroll-indicator-mouse">
                         <div className="scroll-indicator-wheel" />
                     </div>
@@ -342,29 +342,29 @@ export default function Home() {
                             </div>
                         </motion.div>
                         <motion.div
-                        className="grid-3 services-grid"
-                        variants={serviceContainer}
-                        initial="hidden"
-                        animate={servicesInView ? 'visible' : 'hidden'}
-                    >
-                        {services.map((s, index) => {
-                            const slug = s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
-                            return (
-                            <motion.div
-                                key={s.title}
-                                variants={serviceCardAnim}
-                                custom={servicesSplitOffsets[index]}
-                                className="card service-card"
-                                onClick={() => navigate('/services#' + slug)}
-                                style={{ cursor: 'pointer' }}
-                            >
-                                <div className="icon-box" style={{ background: s.color, color: 'var(--primary)' }}>{s.icon}</div>
-                                <h3>{s.title}</h3>
-                                <p>{s.desc}</p>
-                                <span className="card-link">Explore Service <span className="arr">→</span></span>
-                            </motion.div>
-                            )
-                        })}
+                            className="grid-3 services-grid"
+                            variants={serviceContainer}
+                            initial="hidden"
+                            animate={servicesInView ? 'visible' : 'hidden'}
+                        >
+                            {services.map((s, index) => {
+                                const slug = s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+                                return (
+                                    <motion.div
+                                        key={s.title}
+                                        variants={serviceCardAnim}
+                                        custom={servicesSplitOffsets[index]}
+                                        className="card service-card"
+                                        onClick={() => navigate('/services#' + slug)}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        <div className="icon-box" style={{ background: s.color, color: 'var(--primary)' }}>{s.icon}</div>
+                                        <h3>{s.title}</h3>
+                                        <p>{s.desc}</p>
+                                        <span className="card-link">Explore Service <span className="arr">→</span></span>
+                                    </motion.div>
+                                )
+                            })}
                         </motion.div>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: 48, position: 'relative', zIndex: 1 }}>
@@ -385,7 +385,7 @@ export default function Home() {
                     <motion.div variants={fadeInUpBadge} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="badge why-section-badge"><span className="badge-dot" />WHY GROINNOVATIVE</motion.div>
                     <div className="why-inner">
                         <div className="why-text">
-                            <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 20 }}>Why Choose Groinnovative for Website and Software Development?</motion.h2>
+                            <motion.h2 variants={fadeInUpHeading} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 20 }}>Why Choose <span className="gradient-text">GroInnovative</span> for Website and Software Development?</motion.h2>
                             <motion.p variants={fadeInUpP} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} style={{ marginBottom: 32 }}>
                                 Groinnovative is a software development and web design company that builds scalable digital systems for businesses worldwide. From custom web applications and responsive business websites to SEO optimization and digital marketing, we combine clean execution with long-term growth support.
                             </motion.p>
@@ -442,12 +442,12 @@ export default function Home() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                 >
-                    <div 
+                    <div
                         className="testimonial-row testimonial-row-left"
                         style={{ overflow: 'hidden' }}
                     >
-                        <motion.div 
-                            className="testimonial-track" 
+                        <motion.div
+                            className="testimonial-track"
                             ref={trackRef}
                             style={{ width: 'max-content', display: 'flex', x }}
                             drag="x"
@@ -582,7 +582,7 @@ export default function Home() {
                                     <span>SEO and growth suitability</span>
                                     <span>Launch and support clarity</span>
                                 </div>
-                                <Link to="/contact" className="btn btn-white btn-lg">
+                                <Link to="/contact" className="btn btn-primary btn-lg">
                                     Start Your Project <span className="arr">→</span>
                                 </Link>
                             </div>

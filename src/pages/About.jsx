@@ -173,7 +173,7 @@ export default function About() {
                     <div className="hero-grid-wrapper CenteredLayout">
                         <div className="hero-content centered" style={{ maxWidth: 880 }}>
                             <div className="badge reveal" style={{ boxShadow: '0 0 20px rgba(16,185,129,0.15)' }}>
-                                <span className="badge-dot" />ABOUT GRO INNOVATIVE
+                                <span className="badge-dot" />ABOUT GROINNOVATIVE
                             </div>
                             <h1 className="hero-headline reveal reveal-delay-1">
                                 Your Digital Growth{' '}
@@ -194,12 +194,6 @@ export default function About() {
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>Free Consultation</span>
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>NDA Protected</span>
                                 <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" style={{ verticalAlign: 'middle', marginRight: 8 }}><polyline points="20 6 9 17 4 12" /></svg>Remote Friendly</span>
-                            </div>
-                            <div className="scroll-indicator" aria-hidden="true">
-                                <span className="scroll-indicator-label">Scroll Down</span>
-                                <div className="scroll-indicator-mouse">
-                                    <div className="scroll-indicator-wheel" />
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -556,7 +550,7 @@ export default function About() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
                         >
-                            The Team Behind <span className="gradient-text">Gro Innovative</span>
+                            The Team Behind <span className="gradient-text">GroInnovative</span>
                         </motion.h2>
                         {!prefersReduced && (
                             <motion.div
@@ -604,7 +598,7 @@ export default function About() {
                 <div className="container">
                     <div className="section-header services-section-head">
                         <div className="badge"><span className="badge-dot" />COMPANY FAQ</div>
-                        <h2>Common Questions About Groinnovative</h2>
+                        <h2>Common Questions About <span className="gradient-text">GroInnovative</span></h2>
                     </div>
                     <motion.div
                         className="about-faq-list"
@@ -688,7 +682,7 @@ export default function About() {
                                     <span>NDA protected discussion</span>
                                     <span>Honest, no-pressure scoping</span>
                                 </div>
-                                <Link to="/contact" className="btn btn-white btn-lg">
+                                <Link to="/contact" className="btn btn-primary btn-lg">
                                     Start a Conversation <span className="arr">→</span>
                                 </Link>
                             </div>

@@ -7,21 +7,21 @@
 }
 
 /* â”€â”€ Hero â”€â”€ */
-.hero-section {
-    padding: calc(var(--nav-h) + 80px) 0 100px;
+.home-page .hero-section {
+    padding: calc(var(--nav-h) + 20px) 0 64px;
     position: relative;
     overflow: hidden;
     background: transparent;
 }
 
 /* â€”â€”â€” Hero Layout Refactored â€”â€”â€” */
-.hero-grid-wrapper.CenteredLayout {
+.home-page .hero-grid-wrapper.CenteredLayout {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 40px;
+    gap: 24px;
     position: relative;
     z-index: 1;
     min-height: 50vh;
@@ -131,6 +131,63 @@
 }
 
 /* â”€â”€ Trusted by â”€â”€ */
+/* ── Scroll Indicator ── */
+.scroll-indicator {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.scroll-indicator-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: scrollFade 2s ease-in-out infinite alternate;
+}
+
+.scroll-indicator-mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+}
+
+.scroll-indicator-wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 2px;
+    animation: scrollWheel 1.6s ease-in-out infinite;
+    box-shadow: 0 0 6px var(--primary);
+}
+
+@keyframes scrollWheel {
+    0%   { transform: translateY(0); opacity: 1; }
+    80%  { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes scrollFade {
+    from { opacity: 0.5; }
+    to   { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator { bottom: 16px; }
+}
+
+/* ── Trusted by ── */
 .trusted-section {
     padding: 40px 0;
     background: var(--card);
@@ -425,7 +482,7 @@
     transform: scale(1.06) rotate(3deg);
 }
 
-.home-page .service-card > * {
+.home-page .service-card>* {
     position: relative;
     z-index: 2;
 }
@@ -572,6 +629,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .home-page .card::after,
     .stat-card::after {
         display: none;
@@ -598,7 +656,8 @@
     }
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (hover: none),
+(pointer: coarse) {
     .home-page .service-card::after {
         transform: translateY(0);
     }
@@ -613,6 +672,7 @@
 }
 
 @media (max-width: 768px) {
+
     .home-page .service-card,
     .home-page .service-card:hover {
         min-height: 200px;
@@ -664,6 +724,13 @@
     align-items: center;
 }
 
+.why-cta-wrap {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: -32px;
+}
+
 .why-text {
     display: flex;
     flex-direction: column;
@@ -673,7 +740,7 @@
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 }
 
 .why-icon {
@@ -721,7 +788,7 @@
 .why-card-stack {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 48px;
 }
 
 .why-card {
@@ -787,7 +854,7 @@
 @media (max-width: 900px) {
     .why-inner {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 32px;
     }
 
     .why-line {
@@ -1144,7 +1211,7 @@
 }
 
 /* â€”â€”â€” Hero Section â€”â€”â€” */
-.hero-section {
+.home-page .hero-section {
     position: relative;
     padding: 96px 0 72px 0;
     min-height: 100svh;
@@ -1154,7 +1221,7 @@
     background: var(--darker);
 }
 
-.hero-section>.container {
+.home-page .hero-section > .container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1162,12 +1229,12 @@
     min-height: calc(100svh - 168px);
 }
 
-.hero-section .hero-grid-wrapper.CenteredLayout {
+.home-page .hero-section .hero-grid-wrapper.CenteredLayout {
     min-height: 100%;
     transform: translateY(28px);
 }
 
-.hero-section>.scroll-indicator {
+.home-page .hero-section > .scroll-indicator {
     position: absolute;
     left: 50%;
     bottom: 12px;
@@ -1363,7 +1430,8 @@
     .why-card::before {
         left: 50%;
         transform: translateX(-50%);
-        top: -8px; /* Positioned slightly above the top border to connect to the line */
+        top: -8px;
+        /* Positioned slightly above the top border to connect to the line */
         background: var(--darker);
     }
 
@@ -1390,7 +1458,7 @@
 }
 
 @media (max-width: 768px) {
-    .hero-section {
+    .home-page .hero-section {
         padding: 90px 0 60px 0;
     }
 
@@ -1589,4 +1657,7 @@
         box-shadow: none;
     }
 }
-.testimonial-row::-webkit-scrollbar { display: none; }
+
+.testimonial-row::-webkit-scrollbar {
+    display: none;
+}

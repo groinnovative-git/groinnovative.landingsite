@@ -259,7 +259,7 @@ export default function Services() {
                         <div className="badge"><span className="badge-dot" />Service Overview</div>
                         <h2>
                             <span className="services-section-line">What services does</span>
-                            <span className="services-section-line">Groinnovative provide?</span>
+                            <span className="services-section-line"><span className="gradient-text">GroInnovative</span> provide?</span>
                         </h2>
                         <p>Groinnovative provides website creation, custom software development, SEO optimization, digital marketing, site maintenance, logo design, and poster creation for businesses worldwide.</p>
                     </div>
@@ -415,7 +415,7 @@ export default function Services() {
                                     <span>SEO and growth planning</span>
                                     <span>Launch and support clarity</span>
                                 </div>
-                                <Link to="/contact" className="btn btn-white btn-lg">
+                                <Link to="/contact" className="btn btn-primary btn-lg">
                                     Start Your Project <span className="arr">→</span>
                                 </Link>
                             </div>

@@ -256,24 +256,21 @@ p {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  border: none;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--accent);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-green);
 }
 
 @media (max-width: 768px) {
   .btn-secondary {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(25, 25, 25, 0.9);
+    background: var(--primary);
   }
 }
 
@@ -310,32 +307,32 @@ p {
 
 /* ── Section layout ── */
 .section {
-  padding: 100px 0;
+  padding: 40px 0;
   position: relative;
   z-index: 2;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 60px 0;
+    padding: 24px 0;
   }
 }
 
 .cta-banner.section {
-  padding-top: 20px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 56px;
 }
 
 @media (max-width: 768px) {
   .cta-banner.section {
-    padding-top: 10px;
-    padding-bottom: 40px;
+    padding-top: 8px;
+    padding-bottom: 32px;
   }
 }
 
 
 .section-sm {
-  padding: 64px 0;
+  padding: 28px 0;
   position: relative;
   z-index: 2;
 }
@@ -354,11 +351,11 @@ p {
 /* ── Section header ── */
 .section-header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 36px;
 }
 
 .section-header h2 {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .section-header p {
@@ -422,7 +419,7 @@ p {
    on hard refresh when Home.css is not loaded (lazy loading).
    ────────────────────────────────────────────────────────────────────────── */
 .hero-section {
-  padding: calc(var(--nav-h) + 80px) 0 100px;
+  padding: calc(var(--nav-h) + 20px) 0 64px;
   position: relative;
   overflow: hidden;
   background: transparent;
@@ -488,7 +485,7 @@ p {
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 90px 0 60px 0;
+    padding: 70px 0 40px 0;
   }
 
   .trust-pills {
@@ -666,11 +663,11 @@ p {
 
 @media (max-width: 768px) {
   .section {
-    padding: 64px 0;
+    padding: 24px 0;
   }
 
   .section-sm {
-    padding: 48px 0;
+    padding: 20px 0;
   }
 }
 
@@ -683,7 +680,7 @@ p {
   }
 
   .section {
-    padding: 48px 0;
+    padding: 20px 0;
   }
 
   .container {
