@@ -63,7 +63,7 @@ export default function Footer() {
                         <h4>Get in Touch</h4>
                         <ul className="footer-contact-list">
                             <li>groinnovative@gmail.com</li>
-                            <li> +91 9345306018 , +91 9003343806</li>
+                            <li> +91 9345306018 , +91 9003343806, +919524615684</li>
                             <li> Available Worldwide</li>
                         </ul>
                     </div>

@@ -102,7 +102,7 @@ export default function Layout() {
                             </a>
                             <a href={`tel:${secondaryPhone}`} className="floating-call-link">
                                 <span className="floating-call-label">Secondary Number</span>
-                                <strong>9363461876</strong>
+                                <strong>9363461876  9524615684</strong>
                             </a>
                         </div>
                         <button
