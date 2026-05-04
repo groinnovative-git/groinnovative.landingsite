@@ -57,25 +57,99 @@ const whyUs = [
     { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" /><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" /></svg>, title: 'Long-Term Partnership', desc: 'From development to maintenance and optimization, we support your growth beyond launch ensuring continuous improvement.' },
 ]
 
+// const testimonials = [
+//     {
+//         quote: 'GroInnovative helped us move from a basic online presence to a professional lead-focused website. The process was fast, clear, and reliable.',
+//         name: 'Arun Prakash',
+//         role: 'Founder, Local Service Brand',
+//         metric: 'Better conversion clarity',
+//     },
+//     {
+//         quote: 'Their team understood both design and technical execution. We got a cleaner site, stronger positioning, and faster turnaround than expected.',
+//         name: 'Mithra Devi',
+//         role: 'Director, Growing Business',
+//         metric: 'Launch delivered on time',
+//     },
+//     {
+//         quote: 'What stood out was support after delivery. Changes were handled quickly, and the final output felt polished and business-ready.',
+//         name: 'Karthik Raj',
+//         role: 'Operations Lead, SME',
+//         metric: 'Reliable post-launch support',
+//     },
+// ]
 const testimonials = [
-    {
-        quote: 'GroInnovative helped us move from a basic online presence to a professional lead-focused website. The process was fast, clear, and reliable.',
-        name: 'Arun Prakash',
-        role: 'Founder, Local Service Brand',
-        metric: 'Better conversion clarity',
-    },
-    {
-        quote: 'Their team understood both design and technical execution. We got a cleaner site, stronger positioning, and faster turnaround than expected.',
-        name: 'Mithra Devi',
-        role: 'Director, Growing Business',
-        metric: 'Launch delivered on time',
-    },
-    {
-        quote: 'What stood out was support after delivery. Changes were handled quickly, and the final output felt polished and business-ready.',
-        name: 'Karthik Raj',
-        role: 'Operations Lead, SME',
-        metric: 'Reliable post-launch support',
-    },
+  {
+    quote: "We needed a clean, professional website for our clinic and Groinnovative  delivered exactly that. The design was modern, mobile-responsive, and our patients now find us easily on Google. Best investment we made for our online presence.",
+    name: "Dr. Meenakshi Rajan",
+    role: "Founder, MediCare Family Clinic",
+    metric: "Professional Website Design",
+  },
+  {
+    quote: "Before Groinnovative, we had zero leads from our website. After the redesign with proper call-to-action and lead capture forms, we started getting 15–20 enquiries every month. The ROI was visible within 6 weeks of launch.",
+    name: "Arvind",
+    role: "Director, Pinnacle Realty Solutions",
+    metric: "Lead Generation Website",
+  },
+  {
+    quote: "The UI/UX they designed for our e-commerce site was outstanding. Customers started spending more time browsing and our cart abandonment dropped significantly. Their attention to user experience is genuinely top-level.",
+    name: "Sneha Pillai",
+    role: "Co-Founder, Rootz Organic Store",
+    metric: "UI/UX Design",
+  },
+  {
+    quote: "Groinnovative built our site with SEO in mind from day one — fast loading speed, proper meta tags, structured content. Within 3 months we were ranking on the first page for our main service keywords.",
+    name: "Ramesh",
+    role: "Owner, SwiftCargo Logistics",
+    metric: "SEO-Optimized Website",
+  },
+  {
+    quote: "More than 80% of our customers browse on mobile. Groinnovative built a fully responsive site that looks perfect on every device. Booking enquiries through our site doubled after launch.",
+    name: "Priya Nataraj",
+    role: "Founder, Glow Studio Salon",
+    metric: "Mobile Responsive Design",
+  },
+  {
+    quote: "What impressed me most was their post-launch support. Any update, any fix — they responded within hours. For a small business owner like me, having a reliable tech partner after delivery makes all the difference.",
+    name: "Karthik Raj",
+    role: "Operations Lead, BrightEdge Consulting",
+    metric: "Website Maintenance & Support",
+  },
+  {
+    quote: "Groinnovative  changed everything — professional design, student enquiry forms, course listings, all in one place. Admissions increased 40% this season. Worth every rupee.",
+    name: "Suresh Krishnamurthy",
+    role: "Director, Achievers Academy",
+    metric: "Business Website Development",
+  },
+  {
+    quote: "Groinnovative helped us move from a basic online presence to a conversion-focused website. The copy, layout, and call-to-action placement were all strategically designed. Enquiry rate improved from day one.",
+    name: "ArunPrakash",
+    role: "Founder, LocalPro Home Services",
+    metric: "Better Conversion Clarity",
+  },
+  {
+    quote: "They didn't just build a website — they understood our brand positioning and reflected it online. From color palette to messaging, everything aligned with our identity. Clients say our site looks more premium than competitors.",
+    name: "Nithya Venkatesh",
+    role: "Brand Manager, Aroma Kitchen Restaurant",
+    metric: "Digital Growth & Branding",
+  },
+  {
+    quote: "We had a product launch deadline and they delivered the complete website 2 days ahead of schedule. Zero compromise on quality. The team was communicative throughout and made the whole process stress-free.",
+    name: "Mithra Devi",
+    role: "Product Head, NovaMart Retail",
+    metric: "Launch Delivered On Time",
+  },
+  {
+    quote: "Our old website was slow and outdated. Groinnovative redesigned it with optimized images, faster load time, and a modern layout. Our bounce rate dropped by 35% and Google rankings improved within weeks.",
+    name: "VijayAnand",
+    role: "CEO, TechBridge IT Solutions",
+    metric: "Website Redesign & Optimization",
+  },
+  {
+    quote: "It has been 8 months since launch and Groinnovative is still our go-to team for every update and new feature. They treat our business like their own. This kind of long-term commitment is rare and truly valuable.",
+    name: "Deepa Murugan",
+    role: "Managing Director, SilverLine Events & Decor",
+    metric: "Long-Term Partnership",
+  },
 ]
 
 const homeFaqs = [
