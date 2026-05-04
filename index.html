@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#050505" />
+    <!-- Default title (overridden per-page by react-helmet-async) -->
+    <title>
+      Groinnovative | Software Development Company in Tamil Nadu & India
+    </title>
 
-  <!-- Default title (overridden per-page by react-helmet-async) -->
-  <title>Groinnovative | Software Development Company in Tamil Nadu & India</title>
+    <!-- Fonts: prioritize render for LCP text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts: prioritize render for LCP text -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
-    rel="stylesheet" />
-
-  <!--
+    <!--
     All SEO meta tags (title, description, canonical, OG, Twitter, robots,
     geo, hreflang) and JSON-LD structured data are injected dynamically
     per-page by react-helmet-async via src/components/SEO.jsx and
@@ -25,11 +27,23 @@
 
     Do NOT add static meta/schema here — it will cause duplicates.
   -->
-</head>
 
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-KZ2LLXKWSP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-KZ2LLXKWSP");
+    </script>
+  </head>
 
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

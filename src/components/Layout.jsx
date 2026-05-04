@@ -7,6 +7,8 @@ import Footer from './Footer'
 import TopLoaderBar from './TopLoaderBar'
 import FloatingChatbot from './FloatingChatbot'
 
+
+
 export default function Layout() {
     const { pathname } = useLocation()
     const [showTop, setShowTop] = useState(false)
