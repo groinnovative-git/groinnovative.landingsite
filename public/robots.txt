@@ -1,10 +1,84 @@
-# Groinnovative — robots.txt
+# Groinnovative - robots.txt
 # https://groinnovative.com
 
+# Default: allow search engines and crawlers to access public pages.
 User-agent: *
 Allow: /
-
 Disallow: /api/
 
-# Sitemap location (absolute URL — update if domain changes)
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+# Google / Gemini AI surfaces
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: GoogleOther
+Allow: /
+Disallow: /api/
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+
+# DeepSeek
+User-agent: DeepSeekBot
+Allow: /
+Disallow: /api/
+
+# Common AI and web data crawlers
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
+
+User-agent: FacebookBot
+Allow: /
+Disallow: /api/
+
+# Sitemap location
 Sitemap: https://groinnovative.com/sitemap.xml
